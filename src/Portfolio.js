@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 
 class Portfolio extends Component {
+  constructor (props) {
+    super (props);
+  }
   render() {
     return (
-      <div>
+      <form>
       <h4>3. Portfolio</h4>
       <hr/>
       <br/>
@@ -15,8 +18,8 @@ class Portfolio extends Component {
       <textarea name="" rows= "5" placeholder="Anything else (another link, availability, etc.)?"></textarea>
 
       <br/><br/><br/>
-      <input type="submit" name="" value="Submit" class="submit" />
-      </div>
+      <input type="submit" name="" value="Submit" className="submit" />
+      </form>
     )
   }
 }

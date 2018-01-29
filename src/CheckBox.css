@@ -1,0 +1,8 @@
+span.Delete {
+  color: red;
+  display: none;
+}
+
+.container:hover span.Delete {
+  display: inline;
+}
