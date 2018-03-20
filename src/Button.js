@@ -1,13 +1,9 @@
-import React , { Component } from 'react';
+import React, { Component } from 'react';
 import './Button.css';
 
 class Button extends Component {
-  render () {
-    return(
-
-            <th><input type = 'button' value={this.props.title} className={this.props.id}/></th>
-        
-    );
+  render() {
+    return <input type='button' value={this.props.title} />
 
   }
 }

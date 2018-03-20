@@ -233,7 +233,7 @@ class Info extends Component {
         rows = '2'
         name=""
         placeholder="Address*"
-        pattern=""
+        pattern="[A-Za-z]{2,}"
         value={this.state.address}
         onChange={(e)=> this.setState({address: e.target.value})}
         required /><br /><br />

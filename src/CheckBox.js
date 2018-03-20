@@ -2,7 +2,13 @@ import React, { Component } from 'react';
 import './CheckBox.css';
 
 class CheckBox extends Component {
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      isChecked : false
+    }
+  }
 
   render () {
 
@@ -11,7 +17,11 @@ class CheckBox extends Component {
     return (
       <label className= "container">
         {data}
-        <input type="checkbox" name="" value={data} />
+        <input
+          type="checkbox"
+          checked={this.state.isChecked}
+          onClick={(e) => this.setState({isChecked: e.target.checked})}
+           />
         <span className="checkmark"></span>
       <span onClick={(e) => this.props.delete(e, data)} className="Delete"> Delete</span>
       </label>

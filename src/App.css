@@ -10,8 +10,6 @@ hr {
   height: 2px;
 }
 
-
-
 /* Body */
 
 body {
@@ -53,9 +51,10 @@ input[type='email']{
     color: #fff;
 }
 
-input:invalid {
+input:invalid{
 border-bottom: 1px solid red;
 }
+
 
 input::placeholder {
   color: #81868c;
@@ -284,4 +283,13 @@ hr.greyHr {
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-container input {
+  margin: 10px;
 }
