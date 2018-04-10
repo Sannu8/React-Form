@@ -1,0 +1,40 @@
+hr {
+  background-color: #00b2f0;
+  border: none;
+  height: 2px;
+}
+
+body {
+  background-color: #454e57;
+  color: #fff;
+  font-family: sans-serif;
+  margin-right: 20%;
+  margin-left: 20%;
+}
+
+/* All input CSS*/
+
+input[type="text"] {
+  background-color: #454e57;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #81868c;
+  color: #fff;
+}
+
+input.touched:invalid {
+  border-bottom: 1px solid red;
+}
+
+input::placeholder {
+  color: #81868c;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-container input {
+  margin: 10px;
+}

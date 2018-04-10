@@ -1,0 +1,52 @@
+input[type="email"] {
+  background-color: #454e57;
+  width: 60%;
+  border: none;
+  border-bottom: 1px solid #81868c;
+  color: #fff;
+}
+input[type="tel"] {
+  background-color: #454e57;
+  color: #fff;
+  border: none;
+  border-bottom: 1px solid #81868c;
+}
+
+input.floatLeft {
+  float: left;
+  width: 60%;
+}
+
+input.floatRight {
+  float: right;
+  width: 30%;
+}
+
+hr.greyHr {
+  background-color: #81868c;
+  height: 1px;
+  border: none;
+}
+
+input.location {
+  width: 20%;
+  margin-right: 60px;
+}
+
+input.locationend {
+  width: 20%;
+  float: right;
+}
+
+td input[type="text"] {
+  width: 100%;
+  margin-right: 20px;
+}
+
+td input[type="button"] {
+  background-color: #00b2f0;
+  border-color: #00b2f0;
+  height: 30px;
+  width: 100px;
+  color: #fff;
+}

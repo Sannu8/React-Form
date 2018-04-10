@@ -1,0 +1,19 @@
+input[type="url"] {
+  background-color: #454e57;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #81868c;
+  color: #fff;
+}
+
+/* Text areas*/
+textarea {
+  background-color: #454e57;
+  width: 100%;
+  border-color: 1px solid #81868c;
+  color: #fff;
+}
+
+textarea::placeholder {
+  color: #81868c;
+}
