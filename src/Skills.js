@@ -65,7 +65,7 @@ class Skills extends Component {
 		];
 
 		return (
-			<form>
+			<div>
 				<h4>2. Skills and location</h4>
 				<hr />
 				<br />
@@ -136,6 +136,7 @@ class Skills extends Component {
 							<td>
 								<input
 									type="text"
+									pattern="^[A-Z][a-z0-9-,'.]{2,}"
 									value={this.state.inputExperience}
 									onChange={e =>
 										this.setState({ inputExperience: e.target.value })
@@ -154,7 +155,7 @@ class Skills extends Component {
 						</tr>
 					</tbody>
 				</table>
-			</form>
+			</div>
 		);
 	}
 }

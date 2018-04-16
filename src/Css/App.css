@@ -38,3 +38,7 @@ input::placeholder {
 .flex-container input {
   margin: 10px;
 }
+
+input[name="touched"]:invalid {
+  border-bottom: 1px solid red;
+}

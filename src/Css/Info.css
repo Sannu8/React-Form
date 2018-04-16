@@ -50,3 +50,7 @@ td input[type="button"] {
   width: 100px;
   color: #fff;
 }
+
+.errorText {
+  color: red;
+}

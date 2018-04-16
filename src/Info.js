@@ -7,122 +7,159 @@ class Info extends Component {
 
 		this.state = {
 			fullName: "",
-			fullNameError: "",
+			fullNameTouched: "",
 			phone: "",
-			phoneError: "",
+			phoneTouched: "",
 			email: "",
-			emailError: "",
+			emailTouched: "",
 			reemail: "",
+			reEmailTouched: "",
 			address: "",
-			addressError: "",
+			addressTouched: "",
 			city: "",
-			cityError: "",
+			cityTouched: "",
 			states: "",
-			statesError: "",
+			statesTouched: "",
 			zip: "",
-			zipError: "",
+			zipTouched: "",
 			country: "",
-			countryError: "",
+			countryTouched: "",
 			how: "",
-			howError: "",
+			howTouched: "",
 			emailMessage: "",
-			messagecolor: ""
+			messagecolor: "",
+			errorText: ""
 		};
 	}
 
 	validate(inputId) {
 		let isError = false;
 
-		const errors = {
-			fullNameError: "",
-			phoneError: "",
-			emailError: "",
-			addressError: "",
-			cityError: "",
-			statesError: "",
-			zipError: "",
-			countryError: "",
-			howError: ""
-		};
+		console.log(inputId);
+		if (
+			inputId === "fullname" &&
+			!this.state.fullName.match(/^([A-ZÄÖÅ][a-zåäö'?.?]{1,}\s?){2,}/)
+		) {
+			isError = true;
+
+			this.setState({
+				fullName: "",
+				fullNameTouched: "touched",
+				errorText: "Valid FullName is required. For eg: Sandhya Mahat"
+			});
+		} else if (
+			inputId === "tel" &&
+			!this.state.phone.match(/([+]358[0-9]{9})|(0[0-9]{9})/)
+		) {
+			isError = true;
+			this.setState({
+				phone: "",
+				phoneTouched: "touched",
+				errorText:
+					"Valid Phone Number is required. For eg: +358505189559 or 0404189449"
+			});
+		} else if (
+			inputId === "email" &&
+			!this.state.email.match(/^[a-zöåä0-9.-_%+]+@[a-z0-9.-]+\.[a-z]{2,4}$/)
+		) {
+			isError = true;
+
+			this.setState({
+				email: "",
+				emailTouched: "touched",
+				errorText:
+					"Valid Email Address is required. For eg: sandhya.mahat@yahoo.com"
+			});
+		} else if (
+			inputId === "confirm" &&
+			!this.state.email.match(/^[a-zöåä0-9.-_%+]+@[a-z0-9.-]+\.[a-z]{2,4}$/)
+		) {
+			isError = true;
+
+			this.setState({
+				reEmail: "",
+				reEmailTouched: "touched",
+				errorText: "Re-entered email-address is invalid."
+			});
+		} else if (
+			inputId === "address" &&
+			!this.state.address.match(/([a-zåäö0-9,.-]\s?){2,}/)
+		) {
+			isError = true;
+
+			this.setState({
+				address: "",
+				addressTouched: "touched",
+				errorText: "Valid Address is required"
+			});
+		} else if (
+			inputId === "city" &&
+			!this.state.city.match(/([A-ZÅÄÖa-zåäö]{1,}\s?){1,}/)
+		) {
+			isError = true;
+
+			this.setState({
+				city: "",
+				cityTouched: "touched",
+				errorText: "Valid City is required"
+			});
+		} else if (
+			inputId === "state" &&
+			this.state.states !== "" &&
+			!this.state.states.match(/([A-ZÅÄÖa-zåäö]{1,}\s?){1,}/)
+		) {
+			isError = true;
+
+			this.setState({
+				states: "",
+				statesTouched: "touched",
+				errorText: "Valid State is required"
+			});
+		} else if (
+			inputId === "zip" &&
+			this.state.zip !== "" &&
+			!this.state.zip.match(/[0-9]{5}/)
+		) {
+			isError = true;
+
+			this.setState({
+				zip: "",
+				zipTouched: "touched",
+				errorText: "Please enter a valid Zip/Postal Code. For eg: 34142"
+			});
+		} else if (
+			inputId === "country" &&
+			!this.state.country.match(/([A-ZÅÄÖa-zåäö]{1,}\s?){1,}/)
+		) {
+			isError = true;
+
+			this.setState({
+				country: "",
+				countryTouched: "touched",
+				errorText: "Valid Country is required"
+			});
+		} else if (
+			inputId === "how" &&
+			!this.state.how === "" &&
+			!this.state.how.match(/([A-Za-zÅÄÖåäö]\s?){3,}/)
+		) {
+			isError = true;
+
+			this.setState({
+				how: "",
+				howTouched: "touched",
+				errorText: "Valid How is required"
+			});
+		}
 
 		const message = {
 			successAdd: "Your data has successfully been submitted!"
 		};
 
 		/*
-		var i = document.getElementById(inputId);
-		i.classList.add("touched");
 
-		var errorArea = document.getElementById("errorText");
-		var errorMessage = "Valid " + inputId + " is Required.";
-
-		errorArea.innerHTML = errorMessage;
-		errorArea.style.color = "red";
-
-		if (!this.state.fullName.match()) {
-			isError = true;
-			errors.fullNameError = "Valid FullName is required.";
-			console.log(errors.fullNameError);
-
-			this.setState({
-				fullName: ""
-			});
-		} else if (!this.state.phone.match()) {
-			isError = true;
-			errors.phoneError = "Valid phoneNumber is required.";
-
-			this.setState({
-				phone: ""
-			});
-		} else if (!this.state.email.match()) {
-			isError = true;
-			errors.emailError = "Valid email address is required";
-
-			this.setState({
-				email: ""
-			});
-		} else if (!this.state.address.match()) {
-			isError = true;
-			errors.AddressError = "Valid Address is required";
-
-			this.setState({
-				address: ""
-			});
-		} else if (!this.state.city.match()) {
-			isError = true;
-			errors.cityError = "Valid City is required";
-
-			this.setState({
-				city: ""
-			});
-		} else if (!this.state.states.match()) {
-			isError = true;
-			errors.statesError = "Valid Address is required";
-
-			this.setState({
-				states: ""
-			});
-		} else if (!this.state.zip.match()) {
-			isError = true;
-			errors.zipError = "Valid Address is required";
-
-			this.setState({
-				zip: ""
-			});
-		} else if (!this.state.country.match()) {
-			isError = true;
-			errors.countryError = "Valid Address is required";
-
-			this.setState({
-				country: ""
-			});
-		} else if (!this.state.how.match()) {
-			isError = true;
-			errors.howError = "Valid Address is required";
-
-			this.setState({
-				how: ""
-			});
+		
+		} 
 		} else {
 			this.setState({
 				successAdd: "Your data has been successfully added!",
@@ -152,8 +189,8 @@ class Info extends Component {
 			...this.state,
 			...errors
 		});
-
-		return isError; */
+*/
+		return isError;
 	}
 
 	checkEmail(e) {
@@ -172,8 +209,9 @@ class Info extends Component {
 
 	render() {
 		return (
-			<form>
-				<div id="errorText" />
+			<div>
+				<span className="errorText">{this.state.errorText}</span>
+
 				<h4>1. Personal information</h4>
 				<hr />
 
@@ -181,10 +219,11 @@ class Info extends Component {
 				<br />
 				<input
 					type="text"
-					id="fullname"
+					id={"fullname"}
+					name={this.state.fullNameTouched}
 					placeholder="Full name*"
 					pattern="^([A-ZÄÖÅ][a-zåäö'?.?]{1,}\s?){2,}"
-					title="Only accepts Alphabets(Please Enter a Valid FullName. For Eg: Sandhya Mahat)"
+					title="For Example: Sandhya Mahat"
 					className="floatLeft"
 					value={this.state.fullName}
 					onChange={e => this.setState({ fullName: e.target.value })}
@@ -195,9 +234,10 @@ class Info extends Component {
 				<input
 					type="tel"
 					id="tel"
+					name={this.state.phoneTouched}
 					placeholder="Phone#*"
 					pattern="([+]358[0-9]{9})|(0[0-9]{9})"
-					title="Please insert your phone number with the country code. For eg: +358404178995"
+					title="For eg: +358404474741"
 					className="floatRight"
 					value={this.state.phone}
 					onChange={e => this.setState({ phone: e.target.value })}
@@ -211,6 +251,7 @@ class Info extends Component {
 					type="email"
 					placeholder="Email*"
 					id="email"
+					name={this.state.emailTouched}
 					value={this.state.email}
 					onChange={e => this.setState({ email: e.target.value })}
 					onBlur={e => this.validate("email")}
@@ -224,6 +265,7 @@ class Info extends Component {
 					name=""
 					placeholder="Re-enter email*"
 					id="confirm"
+					name={this.state.reEmailTouched}
 					onKeyUp={e => this.checkEmail(e)}
 					value={this.state.reemail}
 					onChange={e => this.setState({ reemail: e.target.value })}
@@ -241,6 +283,7 @@ class Info extends Component {
 					type="text"
 					rows="2"
 					id="address"
+					name={this.state.addressTouched}
 					placeholder="Address*"
 					pattern="[a-zåäö0-9,.-]\s?{2,}"
 					value={this.state.address}
@@ -256,6 +299,7 @@ class Info extends Component {
 				<input
 					type="text"
 					id="city"
+					name={this.state.cityTouched}
 					placeholder="City*"
 					pattern="([A-ZÅÄÖa-zåäö]{1,}\s?){1,}"
 					className="location"
@@ -270,6 +314,7 @@ class Info extends Component {
 					id="state"
 					placeholder="State"
 					className="location"
+					name={this.state.statesTouched}
 					pattern="([A-ZÅÄÖa-zåäö]{1,}\s?){1,}"
 					value={this.state.states}
 					onChange={e => this.setState({ states: e.target.value })}
@@ -279,6 +324,7 @@ class Info extends Component {
 				<input
 					type="text"
 					id="country"
+					name={this.state.countryTouched}
 					placeholder="Country/Region*"
 					pattern="([A-ZÅÄÖa-zåäö]{1,}\s?){1,}"
 					className="location"
@@ -291,6 +337,7 @@ class Info extends Component {
 				<input
 					type="text"
 					id="zip"
+					name={this.state.zipTouched}
 					placeholder="Zip/Postal code"
 					pattern="[0-9]{5}"
 					className="locationend"
@@ -306,13 +353,14 @@ class Info extends Component {
 				<input
 					type="text"
 					id="how"
+					name={this.state.howTouched}
 					pattern="([A-Za-zÅÄÖåäö]\s?){3,}"
 					placeholder="How did you hear about us"
 					value={this.state.how}
 					onChange={e => this.setState({ how: e.target.value })}
 					onBlur={e => this.validate("how")}
 				/>
-			</form>
+			</div>
 		);
 	}
 }

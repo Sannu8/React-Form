@@ -4,10 +4,16 @@ import "./Css/Portfolio.css";
 class Portfolio extends Component {
 	constructor(props) {
 		super(props);
+
+		this.state = {
+			url: "",
+			urlError: "",
+			anything: ""
+		};
 	}
 	render() {
 		return (
-			<form>
+			<div>
 				<h4>3. Portfolio</h4>
 				<hr />
 				<br />
@@ -21,6 +27,8 @@ class Portfolio extends Component {
 					name=""
 					pattern="https?://.+[.].+"
 					title="Please include a valid url starting with https://"
+					value={this.state.url}
+					onChange={e => this.setState({ url: e.target.value })}
 					placeholder="Portfolio link*"
 					required
 				/>
@@ -30,11 +38,13 @@ class Portfolio extends Component {
 					name=""
 					rows="5"
 					placeholder="Anything else (another link, availability, etc.)?"
+					value={this.state.anything}
+					onChange={e => this.setState({ anything: e.target.value })}
 				/>
 				<br />
 				<br />
 				<br />
-			</form>
+			</div>
 		);
 	}
 }
