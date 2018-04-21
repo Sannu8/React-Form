@@ -207,6 +207,12 @@ class Info extends Component {
 		}
 	}
 
+	handleFocus = e => {
+		this.setState({
+			errorText: ""
+		});
+	};
+
 	render() {
 		return (
 			<div>
@@ -228,6 +234,7 @@ class Info extends Component {
 					value={this.state.fullName}
 					onChange={e => this.setState({ fullName: e.target.value })}
 					onBlur={e => this.validate("fullname")}
+					onFocus={e => this.handleFocus("fullname")}
 					required
 				/>
 
@@ -255,6 +262,7 @@ class Info extends Component {
 					value={this.state.email}
 					onChange={e => this.setState({ email: e.target.value })}
 					onBlur={e => this.validate("email")}
+					onFocus={e => this.handleFocus()}
 					required
 				/>
 				<br />
