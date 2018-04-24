@@ -12,7 +12,7 @@ class Info extends Component {
 			phoneTouched: "",
 			email: "",
 			emailTouched: "",
-			reemail: "",
+			reEmail: "",
 			reEmailTouched: "",
 			address: "",
 			addressTouched: "",
@@ -45,18 +45,18 @@ class Info extends Component {
 			this.setState({
 				fullName: "",
 				fullNameTouched: "touched",
-				errorText: "Valid FullName is required. For eg: Sandhya Mahat"
+				errorText: "Valid FullName is required. For eg: Sanna Lindström!"
 			});
 		} else if (
 			inputId === "tel" &&
-			!this.state.phone.match(/([+]358[0-9]{9})|(0[0-9]{9})/)
+			!this.state.phone.match(/(^[+]358[0-9]{9}$)|(^0[0-9]{9}$)/)
 		) {
 			isError = true;
 			this.setState({
 				phone: "",
 				phoneTouched: "touched",
 				errorText:
-					"Valid Phone Number is required. For eg: +358505189559 or 0404189449"
+					"Valid Phone Number is required. For eg: +358505189559 or 0404189449!"
 			});
 		} else if (
 			inputId === "email" &&
@@ -68,29 +68,29 @@ class Info extends Component {
 				email: "",
 				emailTouched: "touched",
 				errorText:
-					"Valid Email Address is required. For eg: sandhya.mahat@yahoo.com"
+					"Valid Email Address is required. For eg: sanna.lindstrom@gmail.com!"
 			});
 		} else if (
 			inputId === "confirm" &&
-			!this.state.email.match(/^[a-zöåä0-9.-_%+]+@[a-z0-9.-]+\.[a-z]{2,4}$/)
+			!this.state.reEmail.match(/^[a-zöåä0-9.-_%+]+@[a-z0-9.-]+\.[a-z]{2,4}$/)
 		) {
 			isError = true;
 
 			this.setState({
 				reEmail: "",
 				reEmailTouched: "touched",
-				errorText: "Re-entered email-address is invalid."
+				errorText: "Re-entered email-address is invalid!"
 			});
 		} else if (
 			inputId === "address" &&
-			!this.state.address.match(/([a-zåäö0-9,.-]\s?){2,}/)
+			!this.state.address.match(/^([A-ZÅÖÄa-zåäö0-9,?.?-?]{1,}\s?){2,}/)
 		) {
 			isError = true;
 
 			this.setState({
 				address: "",
 				addressTouched: "touched",
-				errorText: "Valid Address is required"
+				errorText: "Valid Address is required!"
 			});
 		} else if (
 			inputId === "city" &&
@@ -101,7 +101,7 @@ class Info extends Component {
 			this.setState({
 				city: "",
 				cityTouched: "touched",
-				errorText: "Valid City is required"
+				errorText: "Valid City is required!"
 			});
 		} else if (
 			inputId === "state" &&
@@ -111,9 +111,8 @@ class Info extends Component {
 			isError = true;
 
 			this.setState({
-				states: "",
 				statesTouched: "touched",
-				errorText: "Valid State is required"
+				errorText: "Please Enter a Valid State or Leave it Blank!"
 			});
 		} else if (
 			inputId === "zip" &&
@@ -125,7 +124,8 @@ class Info extends Component {
 			this.setState({
 				zip: "",
 				zipTouched: "touched",
-				errorText: "Please enter a valid Zip/Postal Code. For eg: 34142"
+				errorText:
+					"Please enter a valid Zip/Postal Code or Leave It Blank. For eg: 34142!"
 			});
 		} else if (
 			inputId === "country" &&
@@ -136,7 +136,7 @@ class Info extends Component {
 			this.setState({
 				country: "",
 				countryTouched: "touched",
-				errorText: "Valid Country is required"
+				errorText: "Valid Country is required!"
 			});
 		} else if (
 			inputId === "how" &&
@@ -148,7 +148,7 @@ class Info extends Component {
 			this.setState({
 				how: "",
 				howTouched: "touched",
-				errorText: "Valid How is required"
+				errorText: "Please Enter Valid Data or Leave it Blank!"
 			});
 		}
 
@@ -234,7 +234,7 @@ class Info extends Component {
 					value={this.state.fullName}
 					onChange={e => this.setState({ fullName: e.target.value })}
 					onBlur={e => this.validate("fullname")}
-					onFocus={e => this.handleFocus("fullname")}
+					onFocus={e => this.handleFocus()}
 					required
 				/>
 
@@ -249,6 +249,7 @@ class Info extends Component {
 					value={this.state.phone}
 					onChange={e => this.setState({ phone: e.target.value })}
 					onBlur={e => this.validate("tel")}
+					onFocus={e => this.handleFocus()}
 					required
 				/>
 				<br />
@@ -278,6 +279,7 @@ class Info extends Component {
 					value={this.state.reemail}
 					onChange={e => this.setState({ reemail: e.target.value })}
 					onBlur={e => this.validate("confirm")}
+					onFocus={e => this.handleFocus()}
 					required
 				/>
 				<span style={{ color: this.state.messagecolor }}>
@@ -297,6 +299,7 @@ class Info extends Component {
 					value={this.state.address}
 					onChange={e => this.setState({ address: e.target.value })}
 					onBlur={e => this.validate("address")}
+					onFocus={e => this.handleFocus()}
 					required
 				/>
 				<br />
@@ -314,6 +317,7 @@ class Info extends Component {
 					value={this.state.city}
 					onChange={e => this.setState({ city: e.target.value })}
 					onBlur={e => this.validate("city")}
+					onFocus={e => this.handleFocus()}
 					required
 				/>
 
@@ -327,6 +331,7 @@ class Info extends Component {
 					value={this.state.states}
 					onChange={e => this.setState({ states: e.target.value })}
 					onBlur={e => this.validate("state")}
+					onFocus={e => this.handleFocus()}
 				/>
 
 				<input
@@ -339,6 +344,7 @@ class Info extends Component {
 					value={this.state.country}
 					onChange={e => this.setState({ country: e.target.value })}
 					onBlur={e => this.validate("country")}
+					onFocus={e => this.handleFocus()}
 					required
 				/>
 
@@ -352,6 +358,7 @@ class Info extends Component {
 					value={this.state.zip}
 					onChange={e => this.setState({ zip: e.target.value })}
 					onBlur={e => this.validate("zip")}
+					onFocus={e => this.handleFocus()}
 				/>
 
 				<br />
@@ -367,6 +374,7 @@ class Info extends Component {
 					value={this.state.how}
 					onChange={e => this.setState({ how: e.target.value })}
 					onBlur={e => this.validate("how")}
+					onFocus={e => this.handleFocus()}
 				/>
 			</div>
 		);
