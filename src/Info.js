@@ -106,7 +106,7 @@ class Info extends Component {
 		} else if (
 			inputId === "state" &&
 			this.state.states !== "" &&
-			!this.state.states.match(/([A-ZÅÄÖa-zåäö]{1,}\s?){1,}/)
+			!this.state.states.match(/^([A-ZÅÄÖa-zåäö]{1,}\s?){1,}$/)
 		) {
 			isError = true;
 
@@ -129,7 +129,7 @@ class Info extends Component {
 			});
 		} else if (
 			inputId === "country" &&
-			!this.state.country.match(/([A-ZÅÄÖa-zåäö]{1,}\s?){1,}/)
+			!this.state.country.match(/^([A-ZÅÄÖa-zåäö]{1,}\s?){1,}$/)
 		) {
 			isError = true;
 
@@ -141,7 +141,7 @@ class Info extends Component {
 		} else if (
 			inputId === "how" &&
 			!this.state.how === "" &&
-			!this.state.how.match(/([A-Za-zÅÄÖåäö]\s?){3,}/)
+			!this.state.how.match(/^([A-Za-zÅÄÖåäö]\s?){3,}$/)
 		) {
 			isError = true;
 
