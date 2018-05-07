@@ -94,7 +94,7 @@ class Info extends Component {
 			});
 		} else if (
 			inputId === "city" &&
-			!this.state.city.match(/([A-ZÅÄÖa-zåäö]{1,}\s?){1,}/)
+			!this.state.city.match(/^([A-ZÅÄÖa-zåäö]{1,}\s?){1,}$/)
 		) {
 			isError = true;
 

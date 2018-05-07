@@ -10,6 +10,12 @@ class CheckBox extends Component {
 		};
 	}
 
+	handleCheck(e) {
+		this.setState = {
+			//isChecked: e.target.checked
+		};
+	}
+
 	render() {
 		const data = this.props.data;
 
@@ -19,6 +25,8 @@ class CheckBox extends Component {
 				<input
 					type="checkbox"
 					checked={this.state.isChecked}
+					class="check"
+					name="check"
 					onChange={e => this.setState({ isChecked: e.target.checked })}
 					required={this.props.required}
 				/>
