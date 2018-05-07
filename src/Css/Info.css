@@ -1,4 +1,4 @@
-input[type="email"] {
+input.email {
   background-color: #454e57;
   width: 60%;
   border: none;

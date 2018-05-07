@@ -194,7 +194,7 @@ class Info extends Component {
 	}
 
 	checkEmail(e) {
-		if (this.state.email === this.state.reemail) {
+		if (this.state.email === this.state.reEmail) {
 			this.setState({
 				messagecolor: "LightGreen",
 				emailMessage: "Emails successfully match!"
@@ -256,9 +256,11 @@ class Info extends Component {
 				<br />
 
 				<input
-					type="email"
+					type="text"
+					pattern="^[a-zöåä0-9.-_%+]+@[a-z0-9.-]+\.[a-z]{2,4}$"
 					placeholder="Email*"
 					id="email"
+					className="email"
 					name={this.state.emailTouched}
 					value={this.state.email}
 					onChange={e => this.setState({ email: e.target.value })}
@@ -270,14 +272,16 @@ class Info extends Component {
 				<br />
 
 				<input
-					type="email"
+					type="text"
+					pattern="^[a-zöåä0-9.-_%+]+@[a-z0-9.-]+\.[a-z]{2,4}$"
 					name=""
+					className="email"
 					placeholder="Re-enter email*"
 					id="confirm"
 					name={this.state.reEmailTouched}
 					onKeyUp={e => this.checkEmail(e)}
-					value={this.state.reemail}
-					onChange={e => this.setState({ reemail: e.target.value })}
+					value={this.state.reEmail}
+					onChange={e => this.setState({ reEmail: e.target.value })}
 					onBlur={e => this.validate("confirm")}
 					onFocus={e => this.handleFocus()}
 					required
