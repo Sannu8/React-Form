@@ -117,7 +117,7 @@ class Info extends Component {
 		} else if (
 			inputId === "zip" &&
 			this.state.zip !== "" &&
-			!this.state.zip.match(/[0-9]{5}/)
+			!this.state.zip.match(/^[0-9]{5}$/)
 		) {
 			isError = true;
 
@@ -357,7 +357,7 @@ class Info extends Component {
 					id="zip"
 					name={this.state.zipTouched}
 					placeholder="Zip/Postal code"
-					pattern="[0-9]{5}"
+					pattern="^[0-9]{5}$"
 					className="locationend"
 					value={this.state.zip}
 					onChange={e => this.setState({ zip: e.target.value })}
