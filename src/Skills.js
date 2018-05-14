@@ -26,7 +26,6 @@ class Skills extends Component {
 	}
 
 	handleDelete = (e, element) => {
-		console.log("delete");
 		const newExDatas = Object.assign([], this.state.exDatas).filter(
 			e => e !== element
 		);
@@ -136,8 +135,17 @@ class Skills extends Component {
 							<td>
 								<input
 									type="text"
-									pattern="^[A-Z][a-z0-9-,'.]{2,}"
+									pattern=""
+									title="Please Click the 'Add Experience' Button to add your skill!"
+									name={this.props.inputExperienceTouched}
 									value={this.state.inputExperience}
+									onBlur={e =>
+										this.props.validate(
+											"inputExperience",
+											this.state.inputExperience
+										)
+									}
+									onFocus={e => this.props.handleFocus()}
 									onChange={e =>
 										this.setState({ inputExperience: e.target.value })
 									}

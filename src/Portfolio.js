@@ -6,8 +6,7 @@ class Portfolio extends Component {
 		super(props);
 
 		this.state = {
-			url: "",
-			urlError: "",
+			portfolio: "",
 			anything: ""
 		};
 	}
@@ -23,19 +22,20 @@ class Portfolio extends Component {
 				<br />
 				<br />
 				<input
-					type="url"
-					name=""
-					pattern="https?://.+[.].+"
-					title="Please include a valid url starting with https://"
-					value={this.state.url}
-					onChange={e => this.setState({ url: e.target.value })}
+					type="text"
+					name={this.props.portfolioTouched}
+					pattern="^(www.|https?:[www.]?\/\/)[a-z0-9]+\.[a-z]{2,4}\/?$"
+					title="Please include a valid url. For eg: www.kidesaatio.fi"
+					value={this.state.portfolio}
+					onFocus={e => this.props.handleFocus()}
+					onBlur={e => this.props.validate("portfolio", this.state.portfolio)}
+					onChange={e => this.setState({ portfolio: e.target.value })}
 					placeholder="Portfolio link*"
 					required
 				/>
 				<br />
 				<br />
 				<textarea
-					name=""
 					rows="5"
 					placeholder="Anything else (another link, availability, etc.)?"
 					value={this.state.anything}
