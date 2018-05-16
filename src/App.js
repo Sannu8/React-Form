@@ -13,19 +13,17 @@ class App extends Component {
 
 		this.state = {
 			errorText: "",
-			errorColor: "Red",
-			isError: false
+			errorColor: "Red"
 		};
 	}
 
 	handleFocus = () => {
 		this.setState({
-			isError: false,
 			errorText: ""
 		});
 	};
 
-	validate = (inputId, value) => {
+	validate = (inputId, value, confirmError) => {
 		if (
 			inputId === "fullname" &&
 			!value.match(/^([A-ZÄÖÅ][a-zåäö'?.?]{1,}\s?){2,}$/)
@@ -33,7 +31,7 @@ class App extends Component {
 			this.setState({
 				fullNameTouched: "touched",
 				errorText: "Valid FullName is required. For eg: Sanna Lindström!",
-				isError: true
+				fullNameError: true
 			});
 		} else if (
 			inputId === "tel" &&
@@ -43,7 +41,7 @@ class App extends Component {
 				telTouched: "touched",
 				errorText:
 					"Valid Phone Number is required. For eg: +358505189559 or 0404189449!",
-				isError: true
+				telError: true
 			});
 		} else if (
 			inputId === "email" &&
@@ -53,16 +51,17 @@ class App extends Component {
 				emailTouched: "touched",
 				errorText:
 					"Valid Email Address is required. For eg: sanna.lindstrom@gmail.com!",
-				isError: true
+				emailError: true
 			});
 		} else if (
 			inputId === "confirm" &&
-			!value.match(/^[a-zöåä0-9.-_%+]+@[a-z0-9.-]+\.[a-z]{2,4}$/)
+			(!value.match(/^[a-zöåä0-9.-_%+]+@[a-z0-9.-]+\.[a-z]{2,4}$/) ||
+				confirmError === true)
 		) {
 			this.setState({
 				reEmailTouched: "touched",
 				errorText: "Re-entered email-address is invalid!",
-				isError: true
+				reEmailError: true
 			});
 		} else if (
 			inputId === "address" &&
@@ -71,7 +70,7 @@ class App extends Component {
 			this.setState({
 				addressTouched: "touched",
 				errorText: "Valid Address is required!",
-				isError: true
+				addressError: true
 			});
 		} else if (
 			inputId === "city" &&
@@ -80,7 +79,7 @@ class App extends Component {
 			this.setState({
 				cityTouched: "touched",
 				errorText: "Valid City is required!",
-				isError: true
+				cityError: true
 			});
 		} else if (
 			inputId === "state" &&
@@ -90,7 +89,7 @@ class App extends Component {
 			this.setState({
 				statesTouched: "touched",
 				errorText: "Please Enter a Valid State or Leave it Blank!",
-				isError: true
+				statesError: true
 			});
 		} else if (
 			inputId === "zip" &&
@@ -101,7 +100,7 @@ class App extends Component {
 				zipTouched: "touched",
 				errorText:
 					"Please enter a valid Zip/Postal Code or Leave It Blank. For eg: 34142!",
-				isError: true
+				zipError: true
 			});
 		} else if (
 			inputId === "country" &&
@@ -110,7 +109,7 @@ class App extends Component {
 			this.setState({
 				countryTouched: "touched",
 				errorText: "Valid Country is required!",
-				isError: true
+				countryError: true
 			});
 		} else if (
 			inputId === "how" &&
@@ -120,14 +119,14 @@ class App extends Component {
 			this.setState({
 				howTouched: "touched",
 				errorText: "Please Enter Valid Data or Leave it Blank!",
-				isError: true
+				howError: true
 			});
 		} else if (inputId === "inputExperience" && value !== "") {
 			this.setState({
 				inputExperienceTouched: "touched",
 				errorText:
 					"Please Click the 'Add Experience' Button to add your skill!",
-				isError: true
+				inputExperienceError: true
 			});
 			ReactDOM.findDOMNode(this).scrollIntoView();
 		} else if (
@@ -139,45 +138,56 @@ class App extends Component {
 			this.setState({
 				portfolioTouched: "touched",
 				errorText: "Valid PortFolio Link Is Required!",
-				isError: true
+				portfolioError: true
 			});
 			ReactDOM.findDOMNode(this).scrollIntoView();
 		} else {
-			this.setState({ isError: false });
+			this.setState({
+				fullNameError: false,
+				telError: false,
+				emailError: false,
+				reEmailError: false,
+				addressError: false,
+				cityError: false,
+				statesError: false,
+				countryError: false,
+				zipError: false,
+				howError: false,
+				inputExperienceError: false,
+				portfolioError: false
+			});
 		}
 	};
-
-	checkEmail(e) {
-		if (this.state.email === this.state.reEmail) {
-			this.setState({
-				messagecolor: "LightGreen",
-				emailMessage: "Emails successfully match!"
-			});
-		} else {
-			this.setState({
-				messagecolor: "Red",
-				emailMessage: "Emails do not match!",
-				isError: true
-			});
-		}
-	}
 
 	handleSubmit = e => {
-		console.log(this.state.isError);
-		if (this.state.isError === true) {
-			e.preventDefault();
-			this.setState({
-				errorText: "Please check for errors in the form",
-				errorColor: "Red"
-			});
-			ReactDOM.findDOMNode(this).scrollIntoView();
-		} else {
-			this.setState({
-				errorText: "Thankyou! Your data has successfully been submitted!",
-				errorColor: "Green"
-			});
+		console.log(this.state.telError, this.state.reEmailError);
+		let errors = [
+			this.state.fullNameError,
+			this.state.telError,
+			this.state.emailError,
+			this.state.reEmailError,
+			this.state.addressError,
+			this.state.cityError,
+			this.state.statesError,
+			this.state.countryError,
+			this.state.zipError,
+			this.state.howError,
+			this.state.inputExperienceError,
+			this.state.portfolioError
+		];
+
+		for (var i = 0; i < errors.length; i++) {
+			if (errors[i] === true) {
+				e.preventDefault();
+				this.setState({
+					errorText: "Please check for errors in the form",
+					errorColor: "Red"
+				});
+				ReactDOM.findDOMNode(this).scrollIntoView();
+			}
 		}
 	};
+
 	render() {
 		return (
 			<form>
@@ -197,6 +207,7 @@ class App extends Component {
 					countryTouched={this.state.countryTouched}
 					zipTouched={this.state.zipTouched}
 					howTouched={this.state.howTouched}
+					confirmError={this.state.confirmError}
 				/>
 				<Skills
 					handleFocus={this.handleFocus}

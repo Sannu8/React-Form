@@ -15,7 +15,8 @@ class Info extends Component {
 			states: "",
 			zip: "",
 			country: "",
-			how: ""
+			how: "",
+			confirmError: false
 		};
 	}
 
@@ -23,15 +24,19 @@ class Info extends Component {
 		if (this.state.email === this.state.reEmail) {
 			this.setState({
 				messagecolor: "LightGreen",
-				emailMessage: "Emails successfully match!"
+				emailMessage: "Emails successfully match!",
+				confirmError: false
 			});
 		} else {
 			this.setState({
 				messagecolor: "Red",
-				emailMessage: "Emails do not match!"
+				emailMessage: "Emails do not match!",
+				confirmError: true
 			});
 		}
 	}
+
+	handleChange() {}
 
 	render() {
 		return (
@@ -103,7 +108,13 @@ class Info extends Component {
 					onKeyUp={e => this.checkEmail(e)}
 					value={this.state.reEmail}
 					onChange={e => this.setState({ reEmail: e.target.value })}
-					onBlur={e => this.props.validate("confirm", this.state.reEmail)}
+					onBlur={e =>
+						this.props.validate(
+							"confirm",
+							this.state.reEmail,
+							this.state.confirmError
+						)
+					}
 					onFocus={e => this.props.handleFocus()}
 					required
 				/>
