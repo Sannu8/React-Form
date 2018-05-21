@@ -24,7 +24,6 @@ class Portfolio extends Component {
 				<input
 					type="text"
 					name={this.props.portfolioTouched}
-					pattern="^(www.|https?:[www.]?\/\/)[a-z0-9]+\.[a-z]{2,4}\/?$"
 					title="Please include a valid url. For eg: www.kidesaatio.fi"
 					value={this.state.portfolio}
 					onFocus={e => this.props.handleFocus()}
