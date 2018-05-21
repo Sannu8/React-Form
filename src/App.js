@@ -160,7 +160,6 @@ class App extends Component {
 	};
 
 	handleSubmit = e => {
-		console.log(this.state.telError, this.state.reEmailError);
 		let errors = [
 			this.state.fullNameError,
 			this.state.telError,
@@ -175,17 +174,19 @@ class App extends Component {
 			this.state.inputExperienceError,
 			this.state.portfolioError
 		];
-
-		for (var i = 0; i < errors.length; i++) {
-			if (errors[i] === true) {
+		if (errors.length === 0) {
+			alert("thanks");
+		} else
+			for (var i = 0; i < errors.length; i++) {
 				e.preventDefault();
-				this.setState({
-					errorText: "Please check for errors in the form",
-					errorColor: "Red"
-				});
-				ReactDOM.findDOMNode(this).scrollIntoView();
+				if (errors[i] === true) {
+					this.setState({
+						errorText: "Please check for errors in the form",
+						errorColor: "Red"
+					});
+					ReactDOM.findDOMNode(this).scrollIntoView();
+				}
 			}
-		}
 	};
 
 	render() {
