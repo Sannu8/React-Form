@@ -41,6 +41,7 @@ class CheckBox extends Component {
 				<input
 					type="checkbox"
 					checked={this.state.isChecked}
+					id="check"
 					className="check"
 					name="check"
 					onChange={e => this.handleCheck(e, this.props.required)}

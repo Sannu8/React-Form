@@ -22,10 +22,6 @@ input[type="text"] {
   color: #fff;
 }
 
-input.touched:invalid {
-  border-bottom: 1px solid red;
-}
-
 input::placeholder {
   color: #81868c;
 }
@@ -39,6 +35,20 @@ input::placeholder {
   margin: 10px;
 }
 
-input[name="touched"]:invalid {
+input[type="tel"] {
+  background-color: #454e57;
+  color: #fff;
+  border: none;
+  border-bottom: 1px solid #81868c;
+}
+input.email {
+  background-color: #454e57;
+  width: 60%;
+  border: none;
+  border-bottom: 1px solid #81868c;
+  color: #fff;
+}
+
+input[name="invalid"] {
   border-bottom: 1px solid red;
 }

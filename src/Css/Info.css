@@ -1,17 +1,3 @@
-input.email {
-  background-color: #454e57;
-  width: 60%;
-  border: none;
-  border-bottom: 1px solid #81868c;
-  color: #fff;
-}
-input[type="tel"] {
-  background-color: #454e57;
-  color: #fff;
-  border: none;
-  border-bottom: 1px solid #81868c;
-}
-
 input.floatLeft {
   float: left;
   width: 60%;

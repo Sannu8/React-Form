@@ -24,21 +24,25 @@ class App extends Component {
 	};
 
 	validate = (inputId, value, confirmError) => {
-		if (
-			inputId === "fullname" &&
-			!value.match(/^([A-ZÄÖÅ][a-zåäö'?.?]{1,}\s?){2,}$/)
-		) {
-			this.setState({
-				fullNameTouched: "touched",
-				errorText: "Valid FullName is required. For eg: Sanna Lindström!",
-				fullNameError: true
-			});
+		if (inputId === "fullname") {
+			if (!value.match(/^([A-ZÄÖÅ][a-zåäö'?.?]{1,}\s?){2,}$/)) {
+				this.setState({
+					fullNameTouched: "invalid",
+					errorText: "Valid FullName is required. For eg: Sanna Lindström!",
+					fullNameError: true
+				});
+			} else {
+				this.setState({
+					fullNameError: false,
+					fullNameTouched: ""
+				});
+			}
 		} else if (
 			inputId === "tel" &&
 			!value.match(/(^[+]358[0-9]{9}$)|(^0[0-9]{9}$)/)
 		) {
 			this.setState({
-				telTouched: "touched",
+				telTouched: "invalid",
 				errorText:
 					"Valid Phone Number is required. For eg: +358505189559 or 0404189449!",
 				telError: true
@@ -48,7 +52,7 @@ class App extends Component {
 			!value.match(/^[a-zöåä0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)
 		) {
 			this.setState({
-				emailTouched: "touched",
+				emailTouched: "invalid",
 				errorText:
 					"Valid Email Address is required. For eg: sanna.lindstrom@gmail.com!",
 				emailError: true
@@ -59,7 +63,7 @@ class App extends Component {
 				confirmError === true)
 		) {
 			this.setState({
-				reEmailTouched: "touched",
+				reEmailTouched: "invalid",
 				errorText: "Re-entered email-address is invalid!",
 				reEmailError: true
 			});
@@ -68,7 +72,7 @@ class App extends Component {
 			!value.match(/^([A-ZÅÖÄa-zåäö0-9,?.?-?]{1,}\s?){2,}/)
 		) {
 			this.setState({
-				addressTouched: "touched",
+				addressTouched: "invalid",
 				errorText: "Valid Address is required!",
 				addressError: true
 			});
@@ -77,7 +81,7 @@ class App extends Component {
 			!value.match(/^([A-ZÅÄÖa-zåäö]{1,}\s?){1,}$/)
 		) {
 			this.setState({
-				cityTouched: "touched",
+				cityTouched: "invalid",
 				errorText: "Valid City is required!",
 				cityError: true
 			});
@@ -87,7 +91,7 @@ class App extends Component {
 			!value.match(/^([A-ZÅÄÖa-zåäö]{1,}\s?){1,}$/)
 		) {
 			this.setState({
-				statesTouched: "touched",
+				statesTouched: "invalid",
 				errorText: "Please Enter a Valid State or Leave it Blank!",
 				statesError: true
 			});
@@ -97,7 +101,7 @@ class App extends Component {
 			!value.match(/^[0-9]{5}$/)
 		) {
 			this.setState({
-				zipTouched: "touched",
+				zipTouched: "invalid",
 				errorText:
 					"Please enter a valid Zip/Postal Code or Leave It Blank. For eg: 34142!",
 				zipError: true
@@ -107,7 +111,7 @@ class App extends Component {
 			!value.match(/^([A-ZÅÄÖa-zåäö]{1,}\s?){1,}$/)
 		) {
 			this.setState({
-				countryTouched: "touched",
+				countryTouched: "invalid",
 				errorText: "Valid Country is required!",
 				countryError: true
 			});
@@ -117,13 +121,13 @@ class App extends Component {
 			!value.match(/^([A-Za-zÅÄÖåäö,.]\s?){3,}$/)
 		) {
 			this.setState({
-				howTouched: "touched",
+				howTouched: "invalid",
 				errorText: "Please Enter Valid Data or Leave it Blank!",
 				howError: true
 			});
 		} else if (inputId === "inputExperience" && value !== "") {
 			this.setState({
-				inputExperienceTouched: "touched",
+				inputExperienceTouched: "invalid",
 				errorText:
 					"Please Click the 'Add Experience' Button to add your skill!",
 				inputExperienceError: true
@@ -136,26 +140,69 @@ class App extends Component {
 			)
 		) {
 			this.setState({
-				portfolioTouched: "touched",
+				portfolioTouched: "invalid",
 				errorText: "Valid PortFolio Link Is Required!",
 				portfolioError: true
 			});
 			ReactDOM.findDOMNode(this).scrollIntoView();
 		} else {
-			this.setState({
-				fullNameError: false,
-				telError: false,
-				emailError: false,
-				reEmailError: false,
-				addressError: false,
-				cityError: false,
-				statesError: false,
-				countryError: false,
-				zipError: false,
-				howError: false,
-				inputExperienceError: false,
-				portfolioError: false
-			});
+			if (inputId === "tel") {
+				this.setState({
+					telError: false,
+					telTouched: ""
+				});
+			} else if (inputId === "email") {
+				this.setState({
+					emailError: false,
+					emailTouched: ""
+				});
+			} else if (inputId === "reemail") {
+				this.setState({
+					reEmailError: false,
+					reEmailTouched: ""
+				});
+			} else if (inputId === "address") {
+				this.setState({
+					addressError: false,
+					addressTouched: ""
+				});
+			} else if (inputId === "city") {
+				this.setState({
+					cityError: false,
+					cityTouched: ""
+				});
+			} else if (inputId === "email") {
+				this.setState({
+					emailError: false,
+					emailTouched: ""
+				});
+			} else if (inputId === "states") {
+				this.setState({
+					statesError: false,
+					statesTouched: ""
+				});
+			} else if (inputId === "country") {
+				this.setState({
+					countryError: false,
+					countryTouched: ""
+				});
+			} else if (inputId === "zip") {
+				this.setState({
+					zipError: false,
+					zipTouched: ""
+				});
+			} else if (inputId === "how") {
+				this.setState({
+					howError: false,
+					howTouched: ""
+				});
+			} else {
+				this.setState({
+					inputExperienceError: false,
+					inputExperienceTouched: "",
+					portfolioError: false
+				});
+			}
 		}
 	};
 
@@ -174,19 +221,17 @@ class App extends Component {
 			this.state.inputExperienceError,
 			this.state.portfolioError
 		];
-		if (errors.length === 0) {
-			alert("thanks");
-		} else
-			for (var i = 0; i < errors.length; i++) {
+
+		for (var i = 0; i < errors.length; i++) {
+			if (errors[i] === true) {
 				e.preventDefault();
-				if (errors[i] === true) {
-					this.setState({
-						errorText: "Please check for errors in the form",
-						errorColor: "Red"
-					});
-					ReactDOM.findDOMNode(this).scrollIntoView();
-				}
+				this.setState({
+					errorText: "Please check for errors in the form",
+					errorColor: "Red"
+				});
+				ReactDOM.findDOMNode(this).scrollIntoView();
 			}
+		}
 	};
 
 	render() {
