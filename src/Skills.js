@@ -40,12 +40,15 @@ class Skills extends Component {
 	};
 
 	handleAdd = valueEx => {
-		const newExDatas = Object.assign([], this.state.exDatas).concat(valueEx);
-
-		this.setState({
-			exDatas: newExDatas,
-			inputExperience: ""
-		});
+		if (valueEx !== "") {
+			const newExDatas = Object.assign([], this.state.exDatas).concat(valueEx);
+			this.setState({
+				exDatas: newExDatas,
+				inputExperience: "",
+				inputExperienceError: false
+			});
+			this.props.validate("inputExperience", "");
+		}
 	};
 
 	handleCheck = e => {
@@ -145,7 +148,6 @@ class Skills extends Component {
 											this.state.inputExperience
 										)
 									}
-									onFocus={e => this.props.handleFocus()}
 									onChange={e =>
 										this.setState({ inputExperience: e.target.value })
 									}

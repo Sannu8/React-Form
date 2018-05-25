@@ -26,7 +26,6 @@ class Portfolio extends Component {
 					name={this.props.portfolioTouched}
 					title="Please include a valid url. For eg: www.kidesaatio.fi"
 					value={this.state.portfolio}
-					onFocus={e => this.props.handleFocus()}
 					onBlur={e => this.props.validate("portfolio", this.state.portfolio)}
 					onChange={e => this.setState({ portfolio: e.target.value })}
 					placeholder="Portfolio link*"

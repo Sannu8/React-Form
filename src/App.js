@@ -17,12 +17,6 @@ class App extends Component {
 		};
 	}
 
-	handleFocus = () => {
-		this.setState({
-			errorText: ""
-		});
-	};
-
 	validate = (inputId, value, confirmError) => {
 		if (inputId === "fullname") {
 			if (!value.match(/^([A-ZÄÖÅ][a-zåäö'?.?]{1,}\s?){2,}$/)) {
@@ -34,173 +28,187 @@ class App extends Component {
 			} else {
 				this.setState({
 					fullNameError: false,
-					fullNameTouched: ""
+					fullNameTouched: "",
+					errorText: ""
 				});
 			}
-		} else if (
-			inputId === "tel" &&
-			!value.match(/(^[+]358[0-9]{9}$)|(^0[0-9]{9}$)/)
-		) {
-			this.setState({
-				telTouched: "invalid",
-				errorText:
-					"Valid Phone Number is required. For eg: +358505189559 or 0404189449!",
-				telError: true
-			});
-		} else if (
-			inputId === "email" &&
-			!value.match(/^[a-zöåä0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)
-		) {
-			this.setState({
-				emailTouched: "invalid",
-				errorText:
-					"Valid Email Address is required. For eg: sanna.lindstrom@gmail.com!",
-				emailError: true
-			});
-		} else if (
-			inputId === "confirm" &&
-			(!value.match(/^[a-zöåä0-9.-_%+]+@[a-z0-9.-]+\.[a-z]{2,4}$/) ||
-				confirmError === true)
-		) {
-			this.setState({
-				reEmailTouched: "invalid",
-				errorText: "Re-entered email-address is invalid!",
-				reEmailError: true
-			});
-		} else if (
-			inputId === "address" &&
-			!value.match(/^([A-ZÅÖÄa-zåäö0-9,?.?-?]{1,}\s?){2,}/)
-		) {
-			this.setState({
-				addressTouched: "invalid",
-				errorText: "Valid Address is required!",
-				addressError: true
-			});
-		} else if (
-			inputId === "city" &&
-			!value.match(/^([A-ZÅÄÖa-zåäö]{1,}\s?){1,}$/)
-		) {
-			this.setState({
-				cityTouched: "invalid",
-				errorText: "Valid City is required!",
-				cityError: true
-			});
-		} else if (
-			inputId === "state" &&
-			value !== "" &&
-			!value.match(/^([A-ZÅÄÖa-zåäö]{1,}\s?){1,}$/)
-		) {
-			this.setState({
-				statesTouched: "invalid",
-				errorText: "Please Enter a Valid State or Leave it Blank!",
-				statesError: true
-			});
-		} else if (
-			inputId === "zip" &&
-			value !== "" &&
-			!value.match(/^[0-9]{5}$/)
-		) {
-			this.setState({
-				zipTouched: "invalid",
-				errorText:
-					"Please enter a valid Zip/Postal Code or Leave It Blank. For eg: 34142!",
-				zipError: true
-			});
-		} else if (
-			inputId === "country" &&
-			!value.match(/^([A-ZÅÄÖa-zåäö]{1,}\s?){1,}$/)
-		) {
-			this.setState({
-				countryTouched: "invalid",
-				errorText: "Valid Country is required!",
-				countryError: true
-			});
-		} else if (
-			inputId === "how" &&
-			value !== "" &&
-			!value.match(/^([A-Za-zÅÄÖåäö,.]\s?){3,}$/)
-		) {
-			this.setState({
-				howTouched: "invalid",
-				errorText: "Please Enter Valid Data or Leave it Blank!",
-				howError: true
-			});
-		} else if (inputId === "inputExperience" && value !== "") {
-			this.setState({
-				inputExperienceTouched: "invalid",
-				errorText:
-					"Please Click the 'Add Experience' Button to add your skill!",
-				inputExperienceError: true
-			});
-			ReactDOM.findDOMNode(this).scrollIntoView();
-		} else if (
-			inputId === "portfolio" &&
-			!value.match(
-				/^(www.|https?:\/\/(www.)?)[a-z0-9]+\.[a-z]{2,4}(\/\/[a-z0-9])*$/
-			)
-		) {
-			this.setState({
-				portfolioTouched: "invalid",
-				errorText: "Valid PortFolio Link Is Required!",
-				portfolioError: true
-			});
-			ReactDOM.findDOMNode(this).scrollIntoView();
-		} else {
-			if (inputId === "tel") {
+		} else if (inputId === "tel") {
+			if (!value.match(/(^[+]358[0-9]{9}$)|(^0[0-9]{9}$)/)) {
+				this.setState({
+					telTouched: "invalid",
+					errorText:
+						"Valid Phone Number is required. For eg: +358505189559 or 0404189449!",
+					telError: true
+				});
+			} else {
 				this.setState({
 					telError: false,
-					telTouched: ""
+					telTouched: "",
+					errorText: ""
 				});
-			} else if (inputId === "email") {
+			}
+		} else if (inputId === "email") {
+			if (!value.match(/^[a-zöåä0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)) {
+				this.setState({
+					emailTouched: "invalid",
+					errorText:
+						"Valid Email Address is required. For eg: sanna.lindstrom@gmail.com!",
+					emailError: true
+				});
+			} else if (confirmError === true) {
+				this.setState({
+					reEmailTouched: "invalid",
+					errorText: "Please make sure that the email addresses match!",
+					reEmailError: true
+				});
+			} else if (confirmError === false) {
+				this.setState({
+					reEmailTouched: "",
+					errorText: "",
+					reEmailError: false
+				});
+			} else {
 				this.setState({
 					emailError: false,
-					emailTouched: ""
+					emailTouched: "",
+					errorText: ""
 				});
-			} else if (inputId === "reemail") {
+			}
+		} else if (inputId === "confirm") {
+			if (
+				!value.match(/^[a-zöåä0-9.-_%+]+@[a-z0-9.-]+\.[a-z]{2,4}$/) ||
+				confirmError === true
+			) {
+				this.setState({
+					reEmailTouched: "invalid",
+					errorText: "Re-entered email-address is invalid!",
+					reEmailError: true
+				});
+			} else {
 				this.setState({
 					reEmailError: false,
-					reEmailTouched: ""
+					reEmailTouched: "",
+					errorText: ""
 				});
-			} else if (inputId === "address") {
+			}
+		} else if (inputId === "address") {
+			if (!value.match(/^([A-ZÅÖÄa-zåäö0-9,?.?-?]{1,}\s?){2,}/)) {
+				this.setState({
+					addressTouched: "invalid",
+					errorText: "Valid Address is required!",
+					addressError: true
+				});
+			} else {
 				this.setState({
 					addressError: false,
-					addressTouched: ""
+					addressTouched: "",
+					errorText: ""
 				});
-			} else if (inputId === "city") {
+			}
+		} else if (inputId === "city") {
+			if (!value.match(/^([A-ZÅÄÖa-zåäö]{1,}\s?){1,}$/)) {
+				this.setState({
+					cityTouched: "invalid",
+					errorText: "Valid City is required!",
+					cityError: true
+				});
+			} else {
 				this.setState({
 					cityError: false,
-					cityTouched: ""
+					cityTouched: "",
+					errorText: ""
 				});
-			} else if (inputId === "email") {
+			}
+		} else if (inputId === "state") {
+			if (value !== "" && !value.match(/^([A-ZÅÄÖa-zåäö]{1,}\s?){1,}$/)) {
 				this.setState({
-					emailError: false,
-					emailTouched: ""
+					statesTouched: "invalid",
+					errorText: "Please Enter a Valid State or Leave it Blank!",
+					statesError: true
 				});
-			} else if (inputId === "states") {
+			} else {
 				this.setState({
 					statesError: false,
-					statesTouched: ""
+					statesTouched: "",
+					errorText: ""
 				});
-			} else if (inputId === "country") {
+			}
+		} else if (inputId === "zip") {
+			if (value !== "" && !value.match(/^[0-9]{5}$/)) {
 				this.setState({
-					countryError: false,
-					countryTouched: ""
+					zipTouched: "invalid",
+					errorText:
+						"Please enter a valid Zip/Postal Code or Leave It Blank. For eg: 34142!",
+					zipError: true
 				});
-			} else if (inputId === "zip") {
+			} else {
 				this.setState({
 					zipError: false,
-					zipTouched: ""
+					zipTouched: "",
+					errorText: ""
 				});
-			} else if (inputId === "how") {
+			}
+		} else if (inputId === "country") {
+			if (!value.match(/^([A-ZÅÄÖa-zåäö]{1,}\s?){1,}$/)) {
+				this.setState({
+					countryTouched: "invalid",
+					errorText: "Valid Country is required!",
+					countryError: true
+				});
+			} else {
+				this.setState({
+					countryError: false,
+					countryTouched: "",
+					errorText: ""
+				});
+			}
+		} else if (inputId === "how") {
+			if (value !== "" && !value.match(/^([A-Za-zÅÄÖåäö,.]\s?){3,}$/)) {
+				this.setState({
+					howTouched: "invalid",
+					errorText: "Please Enter Valid Data or Leave it Blank!",
+					howError: true
+				});
+			} else {
 				this.setState({
 					howError: false,
-					howTouched: ""
+					howTouched: "",
+					errorText: ""
 				});
+			}
+		} else if (inputId === "inputExperience") {
+			if (value !== "") {
+				this.setState({
+					inputExperienceTouched: "invalid",
+					errorText:
+						"Please Click the 'Add Experience' Button to add your skill!",
+					inputExperienceError: true
+				});
+				ReactDOM.findDOMNode(this).scrollIntoView();
 			} else {
 				this.setState({
 					inputExperienceError: false,
 					inputExperienceTouched: "",
-					portfolioError: false
+					errorText: ""
+				});
+			}
+		} else if (inputId === "portfolio") {
+			if (
+				!value.match(
+					/^(www.|https?:\/\/(www.)?)[a-z0-9]+\.[a-z]{2,4}(\/\/[a-z0-9])*$/
+				)
+			) {
+				this.setState({
+					portfolioTouched: "invalid",
+					errorText: "Valid PortFolio Link Is Required!",
+					portfolioError: true
+				});
+				ReactDOM.findDOMNode(this).scrollIntoView();
+			} else {
+				this.setState({
+					portfolioError: false,
+					portfolioTouched: "",
+					errorText: ""
 				});
 			}
 		}
@@ -239,7 +247,6 @@ class App extends Component {
 			<form>
 				<Header />
 				<Info
-					handleFocus={this.handleFocus}
 					validate={this.validate}
 					errorText={this.state.errorText}
 					errorColor={this.state.errorColor}
@@ -256,12 +263,10 @@ class App extends Component {
 					confirmError={this.state.confirmError}
 				/>
 				<Skills
-					handleFocus={this.handleFocus}
 					validate={this.validate}
 					inputExperienceTouched={this.state.inputExperienceTouched}
 				/>
 				<Portfolio
-					handleFocus={this.handleFocus}
 					validate={this.validate}
 					portfolioTouched={this.state.portfolioTouched}
 				/>

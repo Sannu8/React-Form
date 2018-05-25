@@ -20,23 +20,37 @@ class Info extends Component {
 		};
 	}
 
-	checkEmail(e) {
-		if (this.state.email === this.state.reEmail) {
-			this.setState({
-				messagecolor: "LightGreen",
-				emailMessage: "Emails successfully match!",
-				confirmError: false
-			});
-		} else {
-			this.setState({
-				messagecolor: "Red",
-				emailMessage: "Emails do not match!",
-				confirmError: true
-			});
+	checkEmail = id => {
+		if (id === "email" && this.state.reEmail !== "") {
+			if (this.state.email === this.state.reEmail) {
+				this.setState({
+					messagecolor: "LightGreen",
+					emailMessage: "Emails successfully match!",
+					confirmError: false
+				});
+			} else {
+				this.setState({
+					messagecolor: "Red",
+					emailMessage: "Emails do not match!",
+					confirmError: true
+				});
+			}
+		} else if (id === "confirm") {
+			if (this.state.email === this.state.reEmail) {
+				this.setState({
+					messagecolor: "LightGreen",
+					emailMessage: "Emails successfully match!",
+					confirmError: false
+				});
+			} else {
+				this.setState({
+					messagecolor: "Red",
+					emailMessage: "Emails do not match!",
+					confirmError: true
+				});
+			}
 		}
-	}
-
-	handleChange() {}
+	};
 
 	render() {
 		return (
@@ -60,7 +74,6 @@ class Info extends Component {
 					value={this.state.fullName}
 					onChange={e => this.setState({ fullName: e.target.value })}
 					onBlur={e => this.props.validate("fullname", this.state.fullName)}
-					onFocus={e => this.props.handleFocus()}
 					required
 				/>
 
@@ -74,7 +87,6 @@ class Info extends Component {
 					value={this.state.phone}
 					onChange={e => this.setState({ phone: e.target.value })}
 					onBlur={e => this.props.validate("tel", this.state.phone)}
-					onFocus={e => this.props.handleFocus()}
 					required
 				/>
 				<br />
@@ -85,11 +97,17 @@ class Info extends Component {
 					placeholder="Email*"
 					id="email"
 					className="email"
+					onKeyUp={e => this.checkEmail("email")}
 					name={this.props.emailTouched}
 					value={this.state.email}
 					onChange={e => this.setState({ email: e.target.value })}
-					onBlur={e => this.props.validate("email", this.state.email)}
-					onFocus={e => this.props.handleFocus()}
+					onBlur={e =>
+						this.props.validate(
+							"email",
+							this.state.email,
+							this.state.confirmError
+						)
+					}
 					required
 				/>
 				<br />
@@ -101,7 +119,7 @@ class Info extends Component {
 					placeholder="Re-enter email*"
 					id="confirm"
 					name={this.props.reEmailTouched}
-					onKeyUp={e => this.checkEmail(e)}
+					onKeyUp={e => this.checkEmail("confirm")}
 					value={this.state.reEmail}
 					onChange={e => this.setState({ reEmail: e.target.value })}
 					onBlur={e =>
@@ -111,7 +129,6 @@ class Info extends Component {
 							this.state.confirmError
 						)
 					}
-					onFocus={e => this.props.handleFocus()}
 					required
 				/>
 				<span style={{ color: this.state.messagecolor }}>
@@ -130,7 +147,6 @@ class Info extends Component {
 					value={this.state.address}
 					onChange={e => this.setState({ address: e.target.value })}
 					onBlur={e => this.props.validate("address", this.state.address)}
-					onFocus={e => this.props.handleFocus()}
 					required
 				/>
 				<br />
@@ -147,7 +163,6 @@ class Info extends Component {
 					value={this.state.city}
 					onChange={e => this.setState({ city: e.target.value })}
 					onBlur={e => this.props.validate("city", this.state.city)}
-					onFocus={e => this.props.handleFocus()}
 					required
 				/>
 
@@ -160,7 +175,6 @@ class Info extends Component {
 					value={this.state.states}
 					onChange={e => this.setState({ states: e.target.value })}
 					onBlur={e => this.props.validate("state", this.state.states)}
-					onFocus={e => this.props.handleFocus()}
 				/>
 
 				<input
@@ -172,7 +186,6 @@ class Info extends Component {
 					value={this.state.country}
 					onChange={e => this.setState({ country: e.target.value })}
 					onBlur={e => this.props.validate("country", this.state.country)}
-					onFocus={e => this.props.handleFocus()}
 					required
 				/>
 
@@ -185,7 +198,6 @@ class Info extends Component {
 					value={this.state.zip}
 					onChange={e => this.setState({ zip: e.target.value })}
 					onBlur={e => this.props.validate("zip", this.state.zip)}
-					onFocus={e => this.props.handleFocus()}
 				/>
 
 				<br />
@@ -200,7 +212,6 @@ class Info extends Component {
 					value={this.state.how}
 					onChange={e => this.setState({ how: e.target.value })}
 					onBlur={e => this.props.validate("how", this.state.how)}
-					onFocus={e => this.props.handleFocus()}
 				/>
 			</div>
 		);
