@@ -14,6 +14,7 @@ class CheckBox extends Component {
 		this.setState({ isChecked: e.target.checked });
 		if (required === "required") {
 			var input = document.getElementsByClassName("check");
+
 			let oneChecked = false;
 			for (let i = 0; i < input.length; i++) {
 				if (input[i].checked === true) {

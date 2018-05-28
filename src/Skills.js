@@ -29,9 +29,14 @@ class Skills extends Component {
 		const newExDatas = Object.assign([], this.state.exDatas).filter(
 			e => e !== element
 		);
-		const newCityDatas = Object.assign([], this.state.cityDatas).filter(
-			e => e !== element
-		);
+		var newCityDatas;
+		if (this.state.cityDatas.length !== 1) {
+			newCityDatas = Object.assign([], this.state.cityDatas).filter(
+				e => e !== element
+			);
+		} else {
+			newCityDatas = this.state.cityDatas;
+		}
 
 		this.setState({
 			exDatas: newExDatas,
