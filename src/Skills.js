@@ -123,6 +123,7 @@ class Skills extends Component {
 									<CheckBox
 										data={this.state.exDatas[data]}
 										delete={this.handleDelete}
+										required=""
 									/>
 								))}
 							</td>

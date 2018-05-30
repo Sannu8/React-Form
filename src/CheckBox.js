@@ -12,12 +12,15 @@ class CheckBox extends Component {
 
 	handleCheck(e, required) {
 		this.setState({ isChecked: e.target.checked });
+		console.log(required);
+
 		if (required === "required") {
 			var input = document.getElementsByClassName("check");
+			console.log(input);
 
 			let oneChecked = false;
 			for (let i = 0; i < input.length; i++) {
-				if (input[i].checked === true) {
+				if (e.target.checked === true) {
 					oneChecked = true;
 				}
 			}

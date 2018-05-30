@@ -59,19 +59,17 @@ class App extends Component {
 				this.setState({
 					reEmailTouched: "invalid",
 					errorText: "Please make sure that the email addresses match!",
-					reEmailError: true
+					reEmailError: true,
+					emailError: false,
+					emailTouched: ""
 				});
 			} else if (confirmError === false) {
 				this.setState({
 					reEmailTouched: "",
 					errorText: "",
-					reEmailError: false
-				});
-			} else {
-				this.setState({
+					reEmailError: false,
 					emailError: false,
-					emailTouched: "",
-					errorText: ""
+					emailTouched: ""
 				});
 			}
 		} else if (inputId === "confirm") {
