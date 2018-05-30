@@ -124,6 +124,7 @@ class Skills extends Component {
 										data={this.state.exDatas[data]}
 										delete={this.handleDelete}
 										required=""
+										check="checked"
 									/>
 								))}
 							</td>
@@ -135,6 +136,7 @@ class Skills extends Component {
 										data={this.state.cityDatas[data]}
 										delete={this.handleDelete}
 										required="required"
+										check="check"
 									/>
 								))}
 							</td>

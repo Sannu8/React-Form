@@ -12,26 +12,17 @@ class CheckBox extends Component {
 
 	handleCheck(e, required) {
 		this.setState({ isChecked: e.target.checked });
-		console.log(required);
+		var input = document.getElementsByClassName("check");
 
-		if (required === "required") {
-			var input = document.getElementsByClassName("check");
-			console.log(input);
-
-			let oneChecked = false;
+		if (e.target.checked === true && required === "required") {
 			for (let i = 0; i < input.length; i++) {
-				if (e.target.checked === true) {
-					oneChecked = true;
-				}
+				input[i].required = false;
+				console.log("citychecked");
 			}
-			if (oneChecked === true) {
-				for (let i = 0; i < input.length; i++) {
-					input[i].required = false;
-				}
-			} else {
-				for (let i = 0; i < input.length; i++) {
-					input[i].required = true;
-				}
+		} else if (e.target.checked === false && required === "required") {
+			for (let i = 0; i < input.length; i++) {
+				input[i].required = true;
+				console.log("citynotChecked");
 			}
 		}
 	}
@@ -46,7 +37,7 @@ class CheckBox extends Component {
 					type="checkbox"
 					checked={this.state.isChecked}
 					id="check"
-					className="check"
+					className={this.props.check}
 					name="check"
 					onChange={e => this.handleCheck(e, this.props.required)}
 					required={this.props.required}
