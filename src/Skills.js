@@ -119,9 +119,9 @@ class Skills extends Component {
 
 						<tr id="checkBoxes">
 							<td colSpan="2" id="ExperienceTd">
-								{this.state.exDatas.map((i, data) => (
+								{this.state.exDatas.map((data, i) => (
 									<CheckBox
-										data={this.state.exDatas[data]}
+										data={this.state.exDatas[i]}
 										delete={this.handleDelete}
 										required=""
 										check="checked"
@@ -131,12 +131,13 @@ class Skills extends Component {
 
 							<td colSpan="2" className="secondCol">
 								<br />
-								{this.state.cityDatas.map((i, data) => (
+								{this.state.cityDatas.map((data, i) => (
 									<CheckBox
-										data={this.state.cityDatas[data]}
+										data={this.state.cityDatas[i]}
 										delete={this.handleDelete}
 										required="required"
 										check="check"
+										index={this.state.cityDatas.length}
 									/>
 								))}
 							</td>
