@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
+
 import "./Css/CheckBox.css";
 
 class CheckBox extends Component {
@@ -7,47 +9,32 @@ class CheckBox extends Component {
 
 		this.state = {
 			isChecked: false
-		};
+		}
 	}
 
-	handleCheck(e, index) {
-		this.setState({ isChecked: e.target.checked });
 
-		var input = document.getElementsByClassName("check");
+	toggleCheckBoxChange = () => {
 
-		let oneChecked = false;
-		for (let i = 0; i < index; i++) {
-			if (input[i].checked === true) {
-				oneChecked = true;
-			}
-		}
+		this.setState(({ isChecked }) => ({ isChecked: !isChecked }));
 
-		if (oneChecked === true) {
-			//At least one is checked
-			for (let i = 0; i < index; i++) {
-				input[i].required = false;
-			}
-		} else {
-			//None checked at the moment
-			for (let i = 0; i < index; i++) {
-				input[i].required = true;
-			}
-		}
+		this.props.handleCheckboxChange(this.props.data, this.props.check);
 	}
 
 	render() {
 		const data = this.props.data;
 
+
 		return (
-			<label className="container">
+			<label className="container" >
 				{data}
-				<input
+				< input
 					type="checkbox"
 					checked={this.state.isChecked}
-					id="check"
+					id={this.props.id}
+					value={data}
 					className={this.props.check}
 					name="check"
-					onChange={e => this.handleCheck(e, this.props.index)}
+					onChange={e => this.toggleCheckBoxChange()}
 					required={this.props.required}
 				/>
 				<span className="checkmark" />
@@ -59,5 +46,12 @@ class CheckBox extends Component {
 		);
 	}
 }
+
+CheckBox.propTypes = {
+	handleCheckboxChange: PropTypes.func.isRequired,
+	data: PropTypes.string.isRequired
+
+
+};
 
 export default CheckBox;

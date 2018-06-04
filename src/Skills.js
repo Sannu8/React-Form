@@ -5,6 +5,7 @@ import Radio from "./Radio.js";
 import CheckBox from "./CheckBox.js";
 
 class Skills extends Component {
+
 	constructor(props) {
 		super(props);
 
@@ -21,8 +22,13 @@ class Skills extends Component {
 				"Boeblingen, Germany",
 				"Somewhere Else"
 			],
-			selectedOption: ""
+			selectedOption: "",
+			required: "required"
 		};
+	}
+
+	componentWillMount = () => {
+		this.selectedCheckboxes = new Set();
 	}
 
 	handleDelete = (e, element) => {
@@ -56,11 +62,34 @@ class Skills extends Component {
 		}
 	};
 
-	handleCheck = e => {
+	handleRadioCheck = e => {
 		this.setState({
 			selectedOption: e.target.id
 		});
 	};
+
+	toggleCheckbox = (label, className) => {
+		if (className === "city") {
+			if (this.selectedCheckboxes.has(label)) {
+				this.selectedCheckboxes.delete(label);
+			}
+			else {
+				this.selectedCheckboxes.add(label);
+			}
+
+			var count = 0;
+			for (const checkbox of this.selectedCheckboxes) {
+				count++;
+			}
+
+			if (count === 0) {
+				this.setState({ required: "required" });
+			}
+			else {
+				this.setState({ required: "" });
+			}
+		}
+	}
 
 	render() {
 		const radioids = ["design", "visual", "ux", "front"];
@@ -76,18 +105,19 @@ class Skills extends Component {
 				<h4>2. Skills and location</h4>
 				<hr />
 				<br />
-				Which is your primary design discipline?*
+				Which is your primary design discipline ?*
 				<br />
 				<br />
 				<table>
 					<tbody>
 						<tr id="buttons">
-							{radioids.map((id, data) => (
+							{radioids.map((data, i) => (
 								<Radio
-									data={radiodatas[data]}
-									id={id}
-									checked={this.state.selectedOption === id}
-									handleCheck={this.handleCheck}
+									data={radiodatas[i]}
+									id={data}
+									isChecked={this.state.isChecked}
+									checked={this.state.selectedOption === data}
+									handleCheck={this.handleRadioCheck}
 								/>
 							))}
 						</tr>
@@ -119,25 +149,29 @@ class Skills extends Component {
 
 						<tr id="checkBoxes">
 							<td colSpan="2" id="ExperienceTd">
+
 								{this.state.exDatas.map((data, i) => (
 									<CheckBox
 										data={this.state.exDatas[i]}
 										delete={this.handleDelete}
+										id={data}
 										required=""
-										check="checked"
+										check="experience"
+										handleCheckboxChange={this.toggleCheckbox}
 									/>
 								))}
 							</td>
 
 							<td colSpan="2" className="secondCol">
 								<br />
-								{this.state.cityDatas.map((data, i) => (
+								{this.state.cityDatas.map((data, i, array) => (
 									<CheckBox
 										data={this.state.cityDatas[i]}
 										delete={this.handleDelete}
-										required="required"
-										check="check"
-										index={this.state.cityDatas.length}
+										id={data}
+										handleCheckboxChange={this.toggleCheckbox}
+										required={this.state.required}
+										check="city"
 									/>
 								))}
 							</td>
@@ -174,7 +208,7 @@ class Skills extends Component {
 						</tr>
 					</tbody>
 				</table>
-			</div>
+			</div >
 		);
 	}
 }
