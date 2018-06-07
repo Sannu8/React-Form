@@ -118,6 +118,7 @@ class Skills extends Component {
 									isChecked={this.state.isChecked}
 									checked={this.state.selectedOption === data}
 									handleCheck={this.handleRadioCheck}
+									key={data}
 								/>
 							))}
 						</tr>
@@ -158,6 +159,7 @@ class Skills extends Component {
 										required=""
 										check="experience"
 										handleCheckboxChange={this.toggleCheckbox}
+										key={data}
 									/>
 								))}
 							</td>
@@ -172,6 +174,7 @@ class Skills extends Component {
 										handleCheckboxChange={this.toggleCheckbox}
 										required={this.state.required}
 										check="city"
+										key={data}
 									/>
 								))}
 							</td>

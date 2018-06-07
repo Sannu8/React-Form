@@ -12,6 +12,7 @@ const Radio = props => {
 					name="button"
 					id={props.id}
 					checked={props.checked}
+					key={props.id}
 					onChange={e => props.handleCheck(e)}
 					required
 				/>

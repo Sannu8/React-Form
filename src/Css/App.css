@@ -10,8 +10,26 @@ body {
   font-family: sans-serif;
   margin-right: 20%;
   margin-left: 20%;
+  
 }
-
+@media only screen and (max-width: 480px) {
+  body {
+    margin-right: 5%;
+    margin-left: 5%;
+  }
+}
+@media only screen and (mid-width: 480px) and (max-width: 720px) {
+  body {
+    margin-right: 7%;
+    margin-left: 7%;
+  }
+}
+@media only screen and (mid-width: 720px) and (max-width: 1280px) {
+  body {
+    margin-right: 10%;
+    margin-left: 10%;
+  }
+}
 /* All input CSS*/
 
 input[type="text"] {

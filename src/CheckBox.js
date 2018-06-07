@@ -36,6 +36,7 @@ class CheckBox extends Component {
 					name="check"
 					onChange={e => this.toggleCheckBoxChange()}
 					required={this.props.required}
+					key={data}
 				/>
 				<span className="checkmark" />
 				<span onClick={e => this.props.delete(e, data)} className="Delete">
