@@ -10,6 +10,12 @@ var _path = require('path');
 
 var _istanbulLibInstrument = require('istanbul-lib-instrument');
 
+var _babelPluginSyntaxObjectRestSpread = require('babel-plugin-syntax-object-rest-spread');
+
+var _babelPluginSyntaxObjectRestSpread2 = _interopRequireDefault(_babelPluginSyntaxObjectRestSpread);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var testExclude = require('test-exclude');
 var findUp = require('find-up');
 
@@ -31,7 +37,7 @@ function makeShouldSkip() {
       var config = {};
       if (Object.keys(opts).length > 0) {
         // explicitly configuring options in babel
-        // takes precendence.
+        // takes precedence.
         config = opts;
       } else if (nycConfig.include || nycConfig.exclude) {
         // nyc was configured in a parent process (keep these settings).
@@ -59,6 +65,7 @@ function makeVisitor(_ref) {
 
   var shouldSkip = makeShouldSkip();
   return {
+    inherits: _babelPluginSyntaxObjectRestSpread2.default,
     visitor: {
       Program: {
         enter: function enter(path) {

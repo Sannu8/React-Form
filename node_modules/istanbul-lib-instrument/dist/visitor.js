@@ -39,6 +39,8 @@ function genVar(filename) {
 
 var VisitState = function () {
     function VisitState(types, sourceFilePath, inputSourceMap) {
+        var ignoreClassMethods = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : [];
+
         _classCallCheck(this, VisitState);
 
         this.varName = genVar(sourceFilePath);
@@ -49,6 +51,7 @@ var VisitState = function () {
         if (typeof inputSourceMap !== "undefined") {
             this.cov.inputSourceMap(inputSourceMap);
         }
+        this.ignoreClassMethods = ignoreClassMethods;
         this.types = types;
         this.sourceMappingURL = null;
     }
@@ -134,6 +137,20 @@ var VisitState = function () {
             // else check custom node attribute set by a prior visitor
             if (this.getAttr(path.node, 'skip-all') !== null) {
                 this.nextIgnore = n;
+            }
+
+            // else check for ignored class methods
+            if (path.isFunctionExpression() && this.ignoreClassMethods.some(function (name) {
+                return path.node.id && name === path.node.id.name;
+            })) {
+                this.nextIgnore = n;
+                return;
+            }
+            if (path.isClassMethod() && this.ignoreClassMethods.some(function (name) {
+                return name === path.node.key.name;
+            })) {
+                this.nextIgnore = n;
+                return;
             }
         }
 
@@ -394,9 +411,11 @@ function parenthesizedExpressionProp(prop) {
 function convertArrowExpression(path) {
     var n = path.node;
     var T = this.types;
-    if (n.expression) {
+    if (!T.isBlockStatement(n.body)) {
         var bloc = n.body.loc;
-        n.expression = false;
+        if (n.expression === true) {
+            n.expression = false;
+        }
         n.body = T.blockStatement([T.returnStatement(n.body)]);
         // restore body location
         n.body.loc = bloc;
@@ -508,7 +527,7 @@ var codeVisitor = {
     LogicalExpression: entries(coverLogicalExpression)
 };
 // the template to insert at the top of the program.
-var coverageTemplate = (0, _babelTemplate2.default)('\n    var COVERAGE_VAR = (function () {\n        var path = PATH,\n            hash = HASH,\n            global = (new Function(\'return this\'))(),\n            gcv = GLOBAL_COVERAGE_VAR,\n            coverageData = INITIAL,\n            coverage = global[gcv] || (global[gcv] = {});\n        if (coverage[path] && coverage[path].hash === hash) {\n            return coverage[path];\n        }\n        coverageData.hash = hash;\n        return coverage[path] = coverageData;\n    })();\n');
+var coverageTemplate = (0, _babelTemplate2.default)('\n    var COVERAGE_VAR = (function () {\n        var path = PATH,\n            hash = HASH,\n            Function = (function(){}).constructor,\n            global = (new Function(\'return this\'))(),\n            gcv = GLOBAL_COVERAGE_VAR,\n            coverageData = INITIAL,\n            coverage = global[gcv] || (global[gcv] = {});\n        if (coverage[path] && coverage[path].hash === hash) {\n            return coverage[path];\n        }\n        coverageData.hash = hash;\n        return coverage[path] = coverageData;\n    })();\n');
 // the rewire plugin (and potentially other babel middleware)
 // may cause files to be instrumented twice, see:
 // https://github.com/istanbuljs/babel-plugin-istanbul/issues/94
@@ -522,6 +541,12 @@ function shouldIgnoreFile(programNode) {
         return COMMENT_FILE_RE.test(c.value);
     });
 }
+
+var defaultProgramVisitorOpts = {
+    coverageVariable: '__coverage__',
+    ignoreClassMethods: [],
+    inputSourceMap: undefined
+};
 /**
  * programVisitor is a `babel` adaptor for instrumentation.
  * It returns an object with two methods `enter` and `exit`.
@@ -539,15 +564,16 @@ function shouldIgnoreFile(programNode) {
  * @param {string} sourceFilePath - the path to source file
  * @param {Object} opts - additional options
  * @param {string} [opts.coverageVariable=__coverage__] the global coverage variable name.
+ * @param {Array} [opts.ignoreClassMethods=[]] names of methods to ignore by default on classes.
  * @param {object} [opts.inputSourceMap=undefined] the input source map, that maps the uninstrumented code back to the
  * original code.
  */
 function programVisitor(types) {
     var sourceFilePath = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'unknown.js';
-    var opts = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : { coverageVariable: '__coverage__', inputSourceMap: undefined };
+    var opts = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : defaultProgramVisitorOpts;
 
     var T = types;
-    var visitState = new VisitState(types, sourceFilePath, opts.inputSourceMap);
+    var visitState = new VisitState(types, sourceFilePath, opts.inputSourceMap, opts.ignoreClassMethods);
     return {
         enter: function enter(path) {
             if (shouldIgnoreFile(path.find(function (p) {
@@ -582,7 +608,7 @@ function programVisitor(types) {
                 INITIAL: coverageNode,
                 HASH: T.stringLiteral(hash)
             });
-            cv._blockHoist = 3;
+            cv._blockHoist = 5;
             path.node.body.unshift(cv);
             return {
                 fileCoverage: coverageData,
