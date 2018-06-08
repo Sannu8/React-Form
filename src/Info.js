@@ -59,7 +59,7 @@ class Info extends Component {
 					{this.props.errorText}
 				</span>
 
-				<h4>1. Personal information</h4>
+				<h3>1. Personal information</h3>
 				<hr />
 
 				<br />

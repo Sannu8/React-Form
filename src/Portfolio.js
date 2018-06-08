@@ -13,11 +13,13 @@ class Portfolio extends Component {
 	render() {
 		return (
 			<div>
-				<h4>3. Portfolio</h4>
+				<h3>3. Portfolio</h3>
 				<hr />
 				<br />
-				Prove you're IBM's next great designer by showing us who you are. What
-				you have done. How you think. Tell us your story.
+				<p>
+					Prove you're IBM's next great designer by showing us who you are. What
+					you have done. How you think. Tell us your story.
+				</p>
 				<br />
 				<br />
 				<br />

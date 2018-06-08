@@ -10,26 +10,11 @@ body {
   font-family: sans-serif;
   margin-right: 20%;
   margin-left: 20%;
+  margin-bottom: 3%;
+  margin-top: 3%;
   
 }
-@media only screen and (max-width: 480px) {
-  body {
-    margin-right: 5%;
-    margin-left: 5%;
-  }
-}
-@media only screen and (mid-width: 480px) and (max-width: 720px) {
-  body {
-    margin-right: 7%;
-    margin-left: 7%;
-  }
-}
-@media only screen and (mid-width: 720px) and (max-width: 1280px) {
-  body {
-    margin-right: 10%;
-    margin-left: 10%;
-  }
-}
+
 /* All input CSS*/
 
 input[type="text"] {
@@ -42,6 +27,8 @@ input[type="text"] {
 
 input::placeholder {
   color: #81868c;
+  font-size: 1.5em;
+  
 }
 
 .flex-container {
@@ -69,4 +56,37 @@ input.email {
 
 input[name="invalid"] {
   border-bottom: 1px solid red;
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    margin-right: 5%;
+    margin-left: 5%;
+  }
+
+  input::placeholder {
+    font-size: 1.5em;
+    
+  }
+}
+@media screen and (min-width: 480px) and (max-width: 720px) {
+  body {
+    margin-right: 7%;
+    margin-left: 7%;
+  }
+}
+@media screen and (min-width: 720px) and (max-width: 1280px) {
+  body {
+    margin-right: 10%;
+    margin-left: 10%;
+  }
+  h3 {
+    font-size: 2em;
+  }
+  input::placeholder {
+    font-size: 2em;
+  }
+}
+@media only screen and (min-width: 1280px) and (max-width: 1440px) {
+
 }

@@ -102,7 +102,7 @@ class Skills extends Component {
 
 		return (
 			<div>
-				<h4>2. Skills and location</h4>
+				<h3>2. Skills and location</h3>
 				<hr />
 				<br />
 				Which is your primary design discipline ?*

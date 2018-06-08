@@ -5,8 +5,8 @@ class Header extends Component {
 	render() {
 		return (
 			<header>
-				<h2>Let's talk</h2>
-				<small>Think you have what it takes? Show us.</small>
+				<h1>Let's talk</h1>
+				<p>Think you have what it takes? Show us.</p>
 			</header>
 		);
 	}

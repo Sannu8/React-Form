@@ -36,3 +36,17 @@ td input[type="button"] {
   width: 100px;
   color: #fff;
 }
+
+@media screen and (max-width: 480px) {
+
+}
+@media screen and (min-width: 480px) and (max-width: 720px) {
+
+}
+@media screen and (min-width: 720px) and (max-width: 1280px) {
+  
+}
+
+@media only screen and (min-width: 1280px) and (max-width: 1440px) {
+
+}
