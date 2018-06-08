@@ -81,11 +81,12 @@ input[name="invalid"] {
     margin-left: 10%;
   }
   h3 {
-    font-size: 2em;
+    font-size: 2.5em;
   }
   input::placeholder {
     font-size: 2em;
   }
+
 }
 @media only screen and (min-width: 1280px) and (max-width: 1440px) {
 
