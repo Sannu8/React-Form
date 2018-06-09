@@ -12,7 +12,7 @@ header {
 }
 @media only screen and (min-width: 480px) and (max-width: 720px) {
   h1 {
-    font-size: 3em;
+    font-size: 2.5em;
   }
   p {
     font-size: 1em;
@@ -20,18 +20,18 @@ header {
 }
 @media only screen and (min-width: 720px) and (max-width: 1280px) {
   h1 {
-    font-size: 3.5em;
+    font-size: 2.5em;
   }
   p {
-    font-size: 2em;
+    font-size: 1.5em;
   }
 }
 
 @media only screen and (min-width: 1280px) and (max-width: 1440px) {
   h1 {
-    font-size: 5em;
+    font-size: 2.5em;
   }
   p {
-    font-size: 2em;
+    font-size: 1.5em;
   }
 }
