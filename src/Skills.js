@@ -105,7 +105,9 @@ class Skills extends Component {
 				<h3>2. Skills and location</h3>
 				<hr />
 				<br />
-				Which is your primary design discipline ?*
+				<section className="text">
+					Which is your primary design discipline ?*
+				</section>
 				<br />
 				<br />
 				<table>
@@ -126,12 +128,16 @@ class Skills extends Component {
 						<tr id="questions">
 							<td colSpan="2">
 								<br />
-								Do you have experience with any other disciplines?
+								<section className="text">
+									Do you have experience with any other disciplines?
+								</section>
 							</td>
 
 							<td colSpan="2" className="secondCol">
 								<br />
-								Where are you interested in working?*
+								<section className="text">
+									Where are you interested in working?*
+								</section>
 							</td>
 						</tr>
 
