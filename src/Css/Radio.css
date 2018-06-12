@@ -42,7 +42,11 @@ input[type="radio"] {
 }
 
 @media screen and (max-width: 480px) {
-
+  .checkmarkRadio {
+    font-size: 1em;
+    width: 90vw;
+    border: 2px solid #81868c;
+  }
 }
 @media screen and (min-width: 480px) and (max-width: 720px) {
 
@@ -52,10 +56,13 @@ input[type="radio"] {
   .checkmarkRadio {
     font-size: 1.5em;
     border: 3px solid #81868c;
-   
   }
 }
 
 @media only screen and (min-width: 1280px) and (max-width: 1440px) {
+
+}
+
+@media only screen and (min-width: 1440px)  {
 
 }

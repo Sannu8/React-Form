@@ -19,15 +19,29 @@ textarea::placeholder {
 }
 
 @media screen and (max-width: 480px) {
-
+textarea {
+  font-size: 1em;
+}
 }
 @media screen and (min-width: 480px) and (max-width: 720px) {
-
+  textarea {
+    font-size: 1em;
+  }
 }
 @media screen and (min-width: 720px) and (max-width: 1280px) {
-  
+  textarea {
+    font-size: 1.4em;
+  }
 }
 
 @media only screen and (min-width: 1280px) and (max-width: 1440px) {
+  textarea {
+    font-size: 1.5em;
+  }
+}
 
+@media only screen and (min-width: 1440px)  {
+  textarea {
+    font-size: 1.5em;
+  }
 }

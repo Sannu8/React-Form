@@ -5,7 +5,7 @@ const Radio = props => {
 	const data = props.data;
 
 	return (
-		<td>
+		<li>
 			<label className="containerRadio">
 				<input
 					type="radio"
@@ -20,7 +20,7 @@ const Radio = props => {
 					<div className="buttonText">{data}</div>
 				</span>
 			</label>
-		</td>
+		</li>
 	);
 };
 

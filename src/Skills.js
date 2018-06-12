@@ -110,113 +110,112 @@ class Skills extends Component {
 				</section>
 				<br />
 				<br />
-				<table>
-					<tbody>
-						<tr id="buttons">
-							{radioids.map((data, i) => (
-								<Radio
-									data={radiodatas[i]}
-									id={data}
-									isChecked={this.state.isChecked}
-									checked={this.state.selectedOption === data}
-									handleCheck={this.handleRadioCheck}
-									key={data}
-								/>
-							))}
-						</tr>
 
-						<tr id="questions">
-							<td colSpan="2">
-								<br />
-								<section className="text">
-									Do you have experience with any other disciplines?
+
+				<ul id="buttons">
+					{radioids.map((data, i) => (
+						<Radio
+							data={radiodatas[i]}
+							id={data}
+							isChecked={this.state.isChecked}
+							checked={this.state.selectedOption === data}
+							handleCheck={this.handleRadioCheck}
+							key={data}
+						/>
+					))}
+				</ul>
+
+				<ul id="questions">
+					<li colSpan="2">
+						<br />
+						<section className="text">
+							Do you have experience with any other disciplines?
 								</section>
-							</td>
+					</li>
 
-							<td colSpan="2" className="secondCol">
-								<br />
-								<section className="text">
-									Where are you interested in working?*
+					<li colSpan="2" className="secondCol">
+						<br />
+						<section className="text">
+							Where are you interested in working?*
 								</section>
-							</td>
-						</tr>
+					</li>
+				</ul>
 
-						<tr>
-							<td colSpan="2" id="EmptyValid">
-								{" "}
-							</td>
-							<td colSpan="2" id="EmptyValid" className="secondCol">
-								<small>
-									You must be legally authorized to work without visa
+				<div>
+					<li colSpan="2" id="EmptyValid">
+						{" "}
+					</li>
+					<li colSpan="2" id="EmptyValid" className="secondCol">
+						<small>
+							You must be legally authorized to work without visa
 									<br />
-									sponsorship in the location(s) you choose.
+							sponsorship in the location(s) you choose.
 								</small>
-							</td>
-						</tr>
+					</li>
+				</div>
 
-						<tr id="checkBoxes">
-							<td colSpan="2" id="ExperienceTd">
+				<div id="checkBoxes">
+					<li colSpan="2" id="ExperienceTd">
 
-								{this.state.exDatas.map((data, i) => (
-									<CheckBox
-										data={this.state.exDatas[i]}
-										delete={this.handleDelete}
-										id={data}
-										required=""
-										check="experience"
-										handleCheckboxChange={this.toggleCheckbox}
-										key={data}
-									/>
-								))}
-							</td>
+						{this.state.exDatas.map((data, i) => (
+							<CheckBox
+								data={this.state.exDatas[i]}
+								delete={this.handleDelete}
+								id={data}
+								required=""
+								check="experience"
+								handleCheckboxChange={this.toggleCheckbox}
+								key={data}
+							/>
+						))}
+					</li>
 
-							<td colSpan="2" className="secondCol">
-								<br />
-								{this.state.cityDatas.map((data, i, array) => (
-									<CheckBox
-										data={this.state.cityDatas[i]}
-										delete={this.handleDelete}
-										id={data}
-										handleCheckboxChange={this.toggleCheckbox}
-										required={this.state.required}
-										check="city"
-										key={data}
-									/>
-								))}
-							</td>
-						</tr>
+					<li colSpan="2" className="secondCol">
+						<br />
+						{this.state.cityDatas.map((data, i, array) => (
+							<CheckBox
+								data={this.state.cityDatas[i]}
+								delete={this.handleDelete}
+								id={data}
+								handleCheckboxChange={this.toggleCheckbox}
+								required={this.state.required}
+								check="city"
+								key={data}
+							/>
+						))}
+					</li>
+				</div>
 
-						<tr id="Add">
-							<td>
-								<input
-									type="text"
-									pattern=""
-									title="Please Click the 'Add Experience' Button to add your skill!"
-									name={this.props.inputExperienceTouched}
-									value={this.state.inputExperience}
-									onBlur={e =>
-										this.props.validate(
-											"inputExperience",
-											this.state.inputExperience
-										)
-									}
-									onChange={e =>
-										this.setState({ inputExperience: e.target.value })
-									}
-								/>
-							</td>
-							<td>
-								<input
-									type="button"
-									value="Add Experience"
-									onClick={() => this.handleAdd(this.state.inputExperience)}
-								/>
-							</td>
+				<div id="Add">
+					<li>
+						<input
+							type="text"
+							pattern=""
+							title="Please Click the 'Add Experience' Button to add your skill!"
+							name={this.props.inputExperienceTouched}
+							value={this.state.inputExperience}
+							onBlur={e =>
+								this.props.validate(
+									"inputExperience",
+									this.state.inputExperience
+								)
+							}
+							onChange={e =>
+								this.setState({ inputExperience: e.target.value })
+							}
+						/>
+					</li>
+					<li>
+						<input
+							type="button"
+							value="Add Experience"
+							onClick={() => this.handleAdd(this.state.inputExperience)}
+						/>
+					</li>
 
-							<td colSpan="2" />
-						</tr>
-					</tbody>
-				</table>
+					<li colSpan="2" />
+				</div>
+
 			</div >
 		);
 	}

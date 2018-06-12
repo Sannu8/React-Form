@@ -24,12 +24,12 @@ input.locationend {
   float: right;
 }
 
-td input[type="text"] {
+li input[type="text"] {
   width: 100%;
   margin-right: 20px;
 }
 
-td input[type="button"] {
+li input[type="button"] {
   background-color: #00b2f0;
   border-color: #00b2f0;
   height: 30px;
@@ -37,8 +37,18 @@ td input[type="button"] {
   color: #fff;
 }
 
-@media screen and (max-width: 480px) {
+br.mobile {
+  display: none;
+}
 
+@media screen and (max-width: 480px) {
+  input.location {
+    width: 30%;
+  }
+
+  br.mobile {
+    display: block;
+  }
 }
 @media screen and (min-width: 480px) and (max-width: 720px) {
 
@@ -48,5 +58,9 @@ td input[type="button"] {
 }
 
 @media only screen and (min-width: 1280px) and (max-width: 1440px) {
+
+}
+
+@media only screen and (min-width: 1440px)  {
 
 }

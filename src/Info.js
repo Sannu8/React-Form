@@ -176,7 +176,7 @@ class Info extends Component {
 					onChange={e => this.setState({ states: e.target.value })}
 					onBlur={e => this.props.validate("state", this.state.states)}
 				/>
-
+				<br className="mobile" /><br className="mobile" />
 				<input
 					type="text"
 					id="country"
