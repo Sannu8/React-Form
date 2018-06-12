@@ -49,10 +49,8 @@ class CheckBox extends Component {
 }
 
 CheckBox.propTypes = {
-	handleCheckboxChange: PropTypes.func.isRequired,
+	//handleCheckboxChange: PropTypes.func.isRequired,
 	data: PropTypes.string.isRequired
-
-
 };
 
 export default CheckBox;

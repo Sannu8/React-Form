@@ -3,25 +3,19 @@ import CheckBox from './CheckBox';
 
 import { shallow } from 'enzyme';
 
-it('renders the checkbox', () => {
+
+
+it('renders the correct text in checkbox component', () => {
     const wrapper = shallow(
         <CheckBox
             data="Pokhara"
             id="Pokhara"
             check="city"
-            key="Pokhara" />);
-    expect(wrapper.find('label').text()).toEqual('Pokhara');
+            key="Pokhara"
+        />);
+    expect(wrapper.find('label').text()).toMatch(/Pokhara/);
 
 })
 
-it('renders the delete', () => {
-    const wrapper = shallow(
-        <CheckBox
-            data="Pokhara"
-            id="Pokhara"
-            check="city"
-            key="Pokhara" />);
 
-    expect(wrapper.find('span').text()).toEqual('Delete');
-});
 
