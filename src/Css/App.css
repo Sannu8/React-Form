@@ -74,6 +74,9 @@ input[name="invalid"] {
     margin-right: 7%;
     margin-left: 7%;
   }
+  h3 {
+    font-size: 1.5em;
+  }
 }
 @media screen and (min-width: 720px) and (max-width: 1280px) {
   body {
@@ -81,7 +84,7 @@ input[name="invalid"] {
     margin-left: 10%;
   }
   h3 {
-    font-size: 2.5em;
+    font-size: 1.6em;
   }
   input::placeholder {
     font-size: 2em;
@@ -91,5 +94,12 @@ input[name="invalid"] {
   }
 }
 @media only screen and (min-width: 1280px) and (max-width: 1440px) {
-
+  h3 {
+    font-size: 1.7em;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  h3 {
+    font-size: 1.8em;
+  }
 }

@@ -4,34 +4,43 @@ header {
 
 @media only screen and (max-width: 480px) {
   h1 {
-    font-size: 1.8em;
+    font-size: 2em;
   }
   p {
-    font-size: 1em;
+    font-size: 1.4em;
   }
 }
 @media only screen and (min-width: 480px) and (max-width: 720px) {
   h1 {
-    font-size: 2.5em;
+    font-size: 2.1em;
   }
   p {
-    font-size: 1em;
+    font-size: 1.5em;
   }
 }
 @media only screen and (min-width: 720px) and (max-width: 1280px) {
   h1 {
-    font-size: 2.5em;
+    font-size: 2.2em;
   }
   p {
-    font-size: 1.5em;
+    font-size: 1.6em;
   }
 }
 
 @media only screen and (min-width: 1280px) and (max-width: 1440px) {
   h1 {
-    font-size: 2.5em;
+    font-size: 2.3em;
   }
   p {
-    font-size: 1.5em;
+    font-size: 1.7em;
+  }
+}
+
+@media only screen and (min-width: 1440px)  {
+  h1 {
+    font-size: 2.4em;
+  }
+  p {
+    font-size: 1.8em;
   }
 }
