@@ -1,6 +1,11 @@
-table {
-  width: 100%;
+ul {
+  list-style-type: none;
 }
+
+#questions, #checkBoxes, #buttons {
+ justify-content: space-between
+}
+
 
 /* CheckBoxes */
 #checkBoxes {

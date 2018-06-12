@@ -112,7 +112,7 @@ class Skills extends Component {
 				<br />
 
 
-				<ul id="buttons">
+				<ul id="buttons" className="flex-container">
 					{radioids.map((data, i) => (
 						<Radio
 							data={radiodatas[i]}
@@ -125,37 +125,35 @@ class Skills extends Component {
 					))}
 				</ul>
 
-				<ul id="questions">
-					<li colSpan="2">
+				<ul id="questions" className="flex-container">
+					<li className="text">
 						<br />
 						<section className="text">
 							Do you have experience with any other disciplines?
-								</section>
+						</section>
 					</li>
 
-					<li colSpan="2" className="secondCol">
+					<li className="secondCol">
 						<br />
 						<section className="text">
 							Where are you interested in working?*
-								</section>
+						</section>
 					</li>
 				</ul>
 
-				<div>
-					<li colSpan="2" id="EmptyValid">
-						{" "}
-					</li>
-					<li colSpan="2" id="EmptyValid" className="secondCol">
+				<ul>
+
+					<li id="EmptyValid" className="flex-container">
 						<small>
 							You must be legally authorized to work without visa
-									<br />
+							<br />
 							sponsorship in the location(s) you choose.
-								</small>
+						</small>
 					</li>
-				</div>
+				</ul>
 
-				<div id="checkBoxes">
-					<li colSpan="2" id="ExperienceTd">
+				<ul id="checkBoxes" className="flex-container">
+					<li id="ExperienceList">
 
 						{this.state.exDatas.map((data, i) => (
 							<CheckBox
@@ -170,7 +168,7 @@ class Skills extends Component {
 						))}
 					</li>
 
-					<li colSpan="2" className="secondCol">
+					<li className="secondCol">
 						<br />
 						{this.state.cityDatas.map((data, i, array) => (
 							<CheckBox
@@ -184,9 +182,9 @@ class Skills extends Component {
 							/>
 						))}
 					</li>
-				</div>
+				</ul>
 
-				<div id="Add">
+				<ul id="Add" className="flex-container">
 					<li>
 						<input
 							type="text"
@@ -212,9 +210,7 @@ class Skills extends Component {
 							onClick={() => this.handleAdd(this.state.inputExperience)}
 						/>
 					</li>
-
-					<li colSpan="2" />
-				</div>
+				</ul>
 
 			</div >
 		);

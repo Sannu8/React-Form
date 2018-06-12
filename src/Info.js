@@ -154,51 +154,53 @@ class Info extends Component {
 
 				<hr className="greyHr" />
 				<br />
-				<input
-					type="text"
-					id="city"
-					name={this.props.cityTouched}
-					placeholder="City*"
-					className="location"
-					value={this.state.city}
-					onChange={e => this.setState({ city: e.target.value })}
-					onBlur={e => this.props.validate("city", this.state.city)}
-					required
-				/>
+				<div className="flex-container">
+					<input
+						type="text"
+						id="city"
+						name={this.props.cityTouched}
+						placeholder="City*"
+						className="location"
+						value={this.state.city}
+						onChange={e => this.setState({ city: e.target.value })}
+						onBlur={e => this.props.validate("city", this.state.city)}
+						required
+					/>
 
-				<input
-					type="text"
-					id="state"
-					placeholder="State"
-					className="location"
-					name={this.props.statesTouched}
-					value={this.state.states}
-					onChange={e => this.setState({ states: e.target.value })}
-					onBlur={e => this.props.validate("state", this.state.states)}
-				/>
-				<br className="mobile" /><br className="mobile" />
-				<input
-					type="text"
-					id="country"
-					name={this.props.countryTouched}
-					placeholder="Country/Region*"
-					className="location"
-					value={this.state.country}
-					onChange={e => this.setState({ country: e.target.value })}
-					onBlur={e => this.props.validate("country", this.state.country)}
-					required
-				/>
+					<input
+						type="text"
+						id="state"
+						placeholder="State"
+						className="location"
+						name={this.props.statesTouched}
+						value={this.state.states}
+						onChange={e => this.setState({ states: e.target.value })}
+						onBlur={e => this.props.validate("state", this.state.states)}
+					/>
+					<br className="mobile" /><br className="mobile" />
+					<input
+						type="text"
+						id="country"
+						name={this.props.countryTouched}
+						placeholder="Country/Region*"
+						className="location"
+						value={this.state.country}
+						onChange={e => this.setState({ country: e.target.value })}
+						onBlur={e => this.props.validate("country", this.state.country)}
+						required
+					/>
 
-				<input
-					type="text"
-					id="zip"
-					name={this.props.zipTouched}
-					placeholder="Zip/Postal code"
-					className="locationend"
-					value={this.state.zip}
-					onChange={e => this.setState({ zip: e.target.value })}
-					onBlur={e => this.props.validate("zip", this.state.zip)}
-				/>
+					<input
+						type="text"
+						id="zip"
+						name={this.props.zipTouched}
+						placeholder="Zip/Postal code"
+						className="locationend"
+						value={this.state.zip}
+						onChange={e => this.setState({ zip: e.target.value })}
+						onBlur={e => this.props.validate("zip", this.state.zip)}
+					/>
+				</div>
 
 				<br />
 				<br />
