@@ -124,94 +124,92 @@ class Skills extends Component {
 						/>
 					))}
 				</ul>
+				<div className="flex-container">
+					<ul id="questions" className="firstCol">
+						<li className="text">
 
-				<ul id="questions" className="flex-container">
-					<li className="text">
-						<br />
-						<section className="text">
-							Do you have experience with any other disciplines?
-						</section>
-					</li>
+							<section className="text">
+								Do you have experience with any other disciplines?
+							</section>
+						</li>
+						<li id="ExperienceList">
+							<br /><br />
+							{this.state.exDatas.map((data, i) => (
+								<CheckBox
+									data={this.state.exDatas[i]}
+									delete={this.handleDelete}
+									id={data}
+									required=""
+									check="experience"
+									handleCheckboxChange={this.toggleCheckbox}
+									key={data}
+								/>
+							))}
+						</li>
+						<li id="inputExperience">
+							<input
+								type="text"
+								pattern=""
+								title="Please Click the 'Add Experience' Button to add your skill!"
+								name={this.props.inputExperienceTouched}
+								value={this.state.inputExperience}
+								onBlur={e =>
+									this.props.validate(
+										"inputExperience",
+										this.state.inputExperience
+									)
+								}
+								onChange={e =>
+									this.setState({ inputExperience: e.target.value })
+								}
+							/>
+						</li>
+						<li id="Add">
+							<input
+								type="button"
+								value="Add Experience"
+								onClick={() => this.handleAdd(this.state.inputExperience)}
+							/>
+						</li>
 
-					<li className="secondCol">
-						<br />
-						<section className="text">
-							Where are you interested in working?*
-						</section>
-					</li>
-				</ul>
+					</ul>
 
-				<ul>
+					<ul>
+						<li className="secondCol">
 
-					<li id="EmptyValid" className="flex-container">
-						<small>
-							You must be legally authorized to work without visa
+							<section className="text">
+								Where are you interested in working?*
+							</section>
+						</li>
+						<li id="EmptyValid" >
 							<br />
-							sponsorship in the location(s) you choose.
-						</small>
-					</li>
-				</ul>
+							<small>
+								You must be legally authorized to work without visa
+								<br />
+								sponsorship in the location(s) you choose.
+							</small>
+						</li>
+						<li className="secondCol">
+							<br />
+							{this.state.cityDatas.map((data, i, array) => (
+								<CheckBox
+									data={this.state.cityDatas[i]}
+									delete={this.handleDelete}
+									id={data}
+									handleCheckboxChange={this.toggleCheckbox}
+									required={this.state.required}
+									check="city"
+									key={data}
+								/>
+							))}
+						</li>
+					</ul>
 
-				<ul id="checkBoxes" className="flex-container">
-					<li id="ExperienceList">
 
-						{this.state.exDatas.map((data, i) => (
-							<CheckBox
-								data={this.state.exDatas[i]}
-								delete={this.handleDelete}
-								id={data}
-								required=""
-								check="experience"
-								handleCheckboxChange={this.toggleCheckbox}
-								key={data}
-							/>
-						))}
-					</li>
 
-					<li className="secondCol">
-						<br />
-						{this.state.cityDatas.map((data, i, array) => (
-							<CheckBox
-								data={this.state.cityDatas[i]}
-								delete={this.handleDelete}
-								id={data}
-								handleCheckboxChange={this.toggleCheckbox}
-								required={this.state.required}
-								check="city"
-								key={data}
-							/>
-						))}
-					</li>
-				</ul>
 
-				<ul id="Add" className="flex-container">
-					<li>
-						<input
-							type="text"
-							pattern=""
-							title="Please Click the 'Add Experience' Button to add your skill!"
-							name={this.props.inputExperienceTouched}
-							value={this.state.inputExperience}
-							onBlur={e =>
-								this.props.validate(
-									"inputExperience",
-									this.state.inputExperience
-								)
-							}
-							onChange={e =>
-								this.setState({ inputExperience: e.target.value })
-							}
-						/>
-					</li>
-					<li>
-						<input
-							type="button"
-							value="Add Experience"
-							onClick={() => this.handleAdd(this.state.inputExperience)}
-						/>
-					</li>
-				</ul>
 
+				</div>
 			</div >
 		);
 	}

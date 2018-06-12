@@ -15,6 +15,14 @@ body {
   
 }
 
+.submit {
+  background-color: #00b2f0;
+  border-color: #00b2f0;
+  height: 40px;
+  width: 20%;
+  color: #fff;
+  font-size: 1.3em;
+}
 .flex-container {
   display: flex;
 }

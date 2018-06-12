@@ -2,11 +2,27 @@ ul {
   list-style-type: none;
 }
 
-#questions, #checkBoxes, #buttons {
- justify-content: space-between
+#buttons {
+  justify-content: space-between;
+ }
+
+#EmptyValid small {
+  color: #81868c;
 }
 
+#add, #inputExperience {
+  width: 50%;
+}
+#inputExperience {
+  float: left;
+}
 
+li input[type="button"] {
+  background-color: #00b2f0;
+  border-color: #00b2f0;
+  height: 30px;
+  color: #fff;
+}
 /* CheckBoxes */
 #checkBoxes {
   vertical-align: top;
@@ -83,14 +99,7 @@ ul {
   transform: rotate(45deg);
 }
 
-.submit {
-  background-color: #00b2f0;
-  border-color: #00b2f0;
-  height: 40px;
-  width: 200px;
-  color: #fff;
-  font-size: 1.3em;
-}
+
 
 @media screen and (max-width: 480px) {
 

@@ -18,7 +18,7 @@ class Portfolio extends Component {
 				<br />
 				
 					Prove you're IBM's next great designer by showing us who you are. What
-					you have done. How you think. Tell us your story.
+					you have done. How you think. 	<br />Tell us your story.
 				
 				<br />
 				<br />

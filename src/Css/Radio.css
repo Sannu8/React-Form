@@ -25,7 +25,6 @@ input[type="radio"] {
   text-align: center;
 }
 
-
 /* On mouse-over, add a grey background color */
 .containerRadio:hover input ~ .checkmarkRadio {
   background-color: #81868c;

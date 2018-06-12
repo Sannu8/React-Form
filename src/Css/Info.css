@@ -14,14 +14,8 @@ hr.greyHr {
   border: none;
 }
 
-input.location {
+input.location, input.locationend {
   width: 20%;
-  margin-right: 60px;
-}
-
-input.locationend {
-  width: 20%;
-  float: right;
 }
 
 li input[type="text"] {
@@ -29,13 +23,7 @@ li input[type="text"] {
   margin-right: 20px;
 }
 
-li input[type="button"] {
-  background-color: #00b2f0;
-  border-color: #00b2f0;
-  height: 30px;
-  width: 100px;
-  color: #fff;
-}
+
 
 br.mobile {
   display: none;
