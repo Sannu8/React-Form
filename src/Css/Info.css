@@ -15,7 +15,7 @@ hr.greyHr {
 }
 
 input.location, input.locationend {
-  width: 20%;
+  width: 23%;
 }
 
 li input[type="text"] {
@@ -24,11 +24,13 @@ li input[type="text"] {
 }
 
 
-
 br.mobile {
   display: none;
 }
 
+div.flex-container {
+  justify-content: space-between;
+}
 @media screen and (max-width: 480px) {
   input.location {
     width: 30%;

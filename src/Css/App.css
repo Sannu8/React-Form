@@ -23,9 +23,8 @@ body {
   color: #fff;
   font-size: 1.3em;
 }
-.flex-container {
-  display: flex;
-}
+
+
 /* All input CSS*/
 
 input[type="text"] {
@@ -46,9 +45,6 @@ input::placeholder {
   display: flex;
 }
 
-.flex-container input {
-  margin: 10px;
-}
 
 input[type="tel"] {
   background-color: #454e57;
@@ -68,6 +64,9 @@ input[name="invalid"] {
   border-bottom: 1px solid red;
 }
 
+ul {
+  padding: 0px;
+}
 @media screen and (max-width: 480px) {
   body {
     margin-right: 5%;

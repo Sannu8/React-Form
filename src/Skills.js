@@ -124,6 +124,7 @@ class Skills extends Component {
 						/>
 					))}
 				</ul>
+
 				<div className="flex-container">
 					<ul id="questions" className="firstCol">
 						<li className="text">
