@@ -12,6 +12,7 @@ body {
   margin-left: 20%;
   margin-bottom: 3%;
   margin-top: 3%;
+  line-height: 25px;
   
 }
 
@@ -71,14 +72,16 @@ ul {
   body {
     margin-right: 5%;
     margin-left: 5%;
+    line-height: 15px;
   }
-
   input::placeholder {
-    font-size: 1.5em;
-    
+    font-size: 1em;
   }
-
+  h3 {
+    font-size: 1em;
+  }
 }
+
 @media screen and (min-width: 480px) and (max-width: 720px) {
   body {
     margin-right: 7%;

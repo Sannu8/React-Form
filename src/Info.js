@@ -136,7 +136,7 @@ class Info extends Component {
 				</span>
 				<br />
 				<br />
-
+				<br />
 				<br />
 				<input
 					type="text"
@@ -177,7 +177,7 @@ class Info extends Component {
 						onChange={e => this.setState({ states: e.target.value })}
 						onBlur={e => this.props.validate("state", this.state.states)}
 					/>
-					<br className="mobile" /><br className="mobile" />
+
 					<input
 						type="text"
 						id="country"
@@ -203,8 +203,8 @@ class Info extends Component {
 				</div>
 
 				<br />
-				<br />
-				<br />
+				<br /><br />
+
 
 				<input
 					type="text"

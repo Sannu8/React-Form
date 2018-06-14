@@ -18,7 +18,9 @@ input[type="radio"] {
   top: 0;
   left: 0;
   height: 40px;
-  width: 200px;
+  width: 80%;
+  padding-right: 10%;
+  padding-left: 10%;
   background-color: #454e57;
   display: block;
   border: 1px solid #81868c;
@@ -43,7 +45,6 @@ input[type="radio"] {
 @media screen and (max-width: 480px) {
   .checkmarkRadio {
     font-size: 1em;
-    width: 90vw;
     border: 2px solid #81868c;
   }
 }

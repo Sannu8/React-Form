@@ -23,11 +23,6 @@ li input[type="text"] {
   margin-right: 20px;
 }
 
-
-br.mobile {
-  display: none;
-}
-
 div.flex-container {
   justify-content: space-between;
 }
@@ -35,10 +30,10 @@ div.flex-container {
   input.location {
     width: 30%;
   }
-
-  br.mobile {
-    display: block;
+  div.flex-container {
+    flex-wrap: wrap;
   }
+ 
 }
 @media screen and (min-width: 480px) and (max-width: 720px) {
 

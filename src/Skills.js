@@ -108,9 +108,6 @@ class Skills extends Component {
 				<section className="text">
 					Which is your primary design discipline ?*
 				</section>
-				<br />
-				<br />
-
 
 				<ul id="buttons" className="flex-container">
 					{radioids.map((data, i) => (
@@ -147,31 +144,33 @@ class Skills extends Component {
 								/>
 							))}
 						</li>
-						<li id="inputExperience">
-							<input
-								type="text"
-								pattern=""
-								title="Please Click the 'Add Experience' Button to add your skill!"
-								name={this.props.inputExperienceTouched}
-								value={this.state.inputExperience}
-								onBlur={e =>
-									this.props.validate(
-										"inputExperience",
-										this.state.inputExperience
-									)
-								}
-								onChange={e =>
-									this.setState({ inputExperience: e.target.value })
-								}
-							/>
-						</li>
-						<li id="Add">
-							<input
-								type="button"
-								value="Add Experience"
-								onClick={() => this.handleAdd(this.state.inputExperience)}
-							/>
-						</li>
+						<div className="inputExp">
+							<li id="inputExperience">
+								<input
+									type="text"
+									pattern=""
+									title="Please Click the 'Add Experience' Button to add your skill!"
+									name={this.props.inputExperienceTouched}
+									value={this.state.inputExperience}
+									onBlur={e =>
+										this.props.validate(
+											"inputExperience",
+											this.state.inputExperience
+										)
+									}
+									onChange={e =>
+										this.setState({ inputExperience: e.target.value })
+									}
+								/>
+							</li>
+							<li id="Add">
+								<input
+									type="button"
+									value="Add Experience"
+									onClick={() => this.handleAdd(this.state.inputExperience)}
+								/>
+							</li>
+						</div>
 
 					</ul>
 

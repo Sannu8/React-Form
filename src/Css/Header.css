@@ -4,10 +4,10 @@ header {
 
 @media only screen and (max-width: 480px) {
   h1 {
-    font-size: 2em;
+    font-size: 1.5em;
   }
   p {
-    font-size: 1.4em;
+    font-size: 1em;
   }
 }
 @media only screen and (min-width: 480px) and (max-width: 720px) {

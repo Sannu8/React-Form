@@ -6,15 +6,22 @@ ul {
   justify-content: space-between;
 }
 
+
 #EmptyValid small {
   color: #81868c;
 }
 
-#add, #inputExperience {
-  width: 50%;
-}
-#inputExperience {
+#inputExperience{
+  width : 50%;
   float: left;
+  margin-right: 10px;
+}
+
+.inputExp {
+  margin-top: 40%;
+  display: flex;
+  align-items: baseline;
+  margin-right: 10px;
 }
 
 li input[type="button"] {
@@ -22,87 +29,17 @@ li input[type="button"] {
   border-color: #00b2f0;
   height: 30px;
   color: #fff;
+  width: 100%;
 }
-/* CheckBoxes */
-#checkBoxes {
-  vertical-align: top;
-}
-/* The container*/
-.container {
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
-  cursor: pointer;
-}
-
-.SpanDelete {
-  opacity: 0;
-  visibility: hidden;
-  display: none;
-}
-
-.SpanDelete:hover {
-  opacity: 1;
-}
-
-/*Hiding the default checkbox of browser */
-.container input {
-  position: absolute;
-  opacity: 0;
-}
-
-/*Creating custom checkbox */
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 16px;
-  width: 16px;
-  background-color: #454e57;
-  border: 2px solid #81868c;
-}
-
-/* On mouse-over, add a grey background color */
-.container:hover input ~ .checkmark {
-  background-color: #81868c;
-}
-
-/* When the checkbox is checked, add a blue background */
-.container input:checked ~ .checkmark {
-  background-color: #00b2f0;
-  border: 1px solid #00b2f0;
-}
-
-/* Create the checkmark/indicator (hidden when not checked) */
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-/* Show the checkmark when checked */
-.container input:checked ~ .checkmark:after {
-  display: block;
-}
-
-/* Style the checkmark/indicator */
-.container .checkmark:after {
-  left: 6px;
-  top: 2px;
-  width: 3px;
-  height: 8px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-
-
 
 @media screen and (max-width: 480px) {
-
+ ul.flex-container {
+    flex-direction: column;
+  }
+  .inputExp {
+    margin-top: 10%;
+    
+  }
 }
 @media screen and (min-width: 480px) and (max-width: 720px) {
 
